@@ -19,9 +19,11 @@
 		4C4583711FC96432002AFB69 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4583701FC96432002AFB69 /* LoginViewController.swift */; };
 		4C4F5E5A1FD3F1B900AC40F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */; };
 		4C4F5E5C1FD3F1DB00AC40F3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */; };
+		5E48A51588F5AA744DA8E726 /* Pods_ArchitectureSampleWithFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F3BC4701245F536E3E013D /* Pods_ArchitectureSampleWithFirebase.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		47F3BC4701245F536E3E013D /* Pods_ArchitectureSampleWithFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArchitectureSampleWithFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C138D931FD0FEE200CC3114 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		4C138D951FD1062500CC3114 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		4C138D961FD1062500CC3114 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
@@ -45,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E48A51588F5AA744DA8E726 /* Pods_ArchitectureSampleWithFirebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +66,7 @@
 		300AD94B5CB5D358D358920B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				47F3BC4701245F536E3E013D /* Pods_ArchitectureSampleWithFirebase.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

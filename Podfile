@@ -6,10 +6,10 @@ target 'ArchitectureSampleWithFirebase' do
   use_frameworks!
 
   # Pods for ArchitectureSampleWithFirebase
-  pod 'Firebase'
+  pod 'Firebase', '4.7.0'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   
-  pod 'R.swift'
+  pod 'R.swift', '4.0.0'
 end
