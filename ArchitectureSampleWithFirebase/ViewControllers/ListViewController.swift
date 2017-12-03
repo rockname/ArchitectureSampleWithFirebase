@@ -27,7 +27,12 @@ class ListViewController: UIViewController {
         if segue.identifier == R.segue.listViewController.toPost.identifier {
             if let vc = segue.destination as? PostViewController,
                 let snap = self.selectedSnapshot {
-                vc.selectedSnapshot = snap
+                vc.selectedPost = Post(
+                    id: snap.documentID,
+                    user: snap["user"] as! String,
+                    content: snap["content"] as! String,
+                    date: snap["date"] as! Date
+                )
             }
         }
     }
