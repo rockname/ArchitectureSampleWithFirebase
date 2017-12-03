@@ -20,6 +20,7 @@
 		4C4F5E5A1FD3F1B900AC40F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */; };
 		4C4F5E5C1FD3F1DB00AC40F3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */; };
 		4C4F5E601FD4165900AC40F3 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4F5E5F1FD4165900AC40F3 /* PostModel.swift */; };
+		4C4F5E631FD41C1500AC40F3 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4F5E621FD41C1500AC40F3 /* AuthModel.swift */; };
 		5E48A51588F5AA744DA8E726 /* Pods_ArchitectureSampleWithFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F3BC4701245F536E3E013D /* Pods_ArchitectureSampleWithFirebase.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		4C4F5E5F1FD4165900AC40F3 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		4C4F5E621FD41C1500AC40F3 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		9C656F36F39B7C52E8DB0138 /* Pods-ArchitectureSampleWithFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSampleWithFirebase.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArchitectureSampleWithFirebase/Pods-ArchitectureSampleWithFirebase.release.xcconfig"; sourceTree = "<group>"; };
 		F6942778E1CB5D48087C10AD /* Pods-ArchitectureSampleWithFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSampleWithFirebase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArchitectureSampleWithFirebase/Pods-ArchitectureSampleWithFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				4C4F5E5F1FD4165900AC40F3 /* PostModel.swift */,
+				4C4F5E621FD41C1500AC40F3 /* AuthModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				4C138D941FD0FEE200CC3114 /* ListViewController.swift in Sources */,
 				4C45835C1FC957FB002AFB69 /* AppDelegate.swift in Sources */,
 				4C138D971FD1062500CC3114 /* ListTableViewCell.swift in Sources */,
+				4C4F5E631FD41C1500AC40F3 /* AuthModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

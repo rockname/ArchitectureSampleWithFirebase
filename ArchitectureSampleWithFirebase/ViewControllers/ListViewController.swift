@@ -1,22 +1,17 @@
 import UIKit
-import Firebase
 
 class ListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let db = Firestore.firestore()
-    
-    var contentArray: [DocumentSnapshot] = []
-    var snapshot: QuerySnapshot?
-    var selectedSnapshot: DocumentSnapshot?
-    
-    var listner: ListenerRegistration?
+    let postModel = PostModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeTableView()
-        read()
+        postModel.read() { error in
+            self.reload()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,7 +21,7 @@ class ListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == R.segue.listViewController.toPost.identifier {
             if let vc = segue.destination as? PostViewController,
-                let snap = self.selectedSnapshot {
+                let snap = postModel.selectedSnapshot {
                 vc.selectedPost = Post(
                     id: snap.documentID,
                     user: snap["user"] as! String,
@@ -38,7 +33,7 @@ class ListViewController: UIViewController {
     }
     
     @IBAction func addButtonTapped() {
-        selectedSnapshot = nil
+        postModel.selectedSnapshot = nil
         self.toPost()
     }
     
@@ -51,41 +46,15 @@ class ListViewController: UIViewController {
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
     }
-
-    func read()  {
-        let options = QueryListenOptions()
-        options.includeQueryMetadataChanges(true)
-        listner = db.collection("posts")
-            .addSnapshotListener(options: options) { snapshot, error in
-                guard let snap = snapshot else {
-                    print("Error fetching document: \(error!)")
-                    return
-                }
-                for diff in snap.documentChanges {
-                    if diff.type == .added {
-                        print("New data: \(diff.document.data())")
-                    }
-                }
-                print("Current data: \(snap)")
-                self.snapshot = snap
-                self.reload()
-        }
-    }
-    
-    func delete(deleteIndexPath indexPath: IndexPath) {
-        db.collection("posts").document(contentArray[indexPath.row].documentID).delete()
-        contentArray.remove(at: indexPath.row)
-    }
     
     func reload() {
-        if let snap = snapshot,
+        if let snap = postModel.snapshot,
             !snap.isEmpty {
             print(snap)
-            contentArray.removeAll()
+            postModel.contentArray.removeAll()
             for item in snap.documents {
-                contentArray.append(item)
+                postModel.contentArray.append(item)
             }
-            db.settings.isPersistenceEnabled = true
             self.tableView.reloadData()
         }
     }
@@ -98,26 +67,26 @@ class ListViewController: UIViewController {
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contentArray.count
+        return postModel.contentArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.listTableViewCell.identifier) as? ListTableViewCell else { return UITableViewCell() }
         
-        let content = contentArray[indexPath.row]
+        let content = postModel.contentArray[indexPath.row]
         let date = content["date"] as! Date
         cell.setCellData(date: date, content: String(describing: content["content"]!))
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedSnapshot = contentArray[indexPath.row]
+        postModel.selectedSnapshot = postModel.contentArray[indexPath.row]
         self.toPost()
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            self.delete(deleteIndexPath: indexPath)
+            postModel.delete(at: indexPath.row)
             tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
         }
     }
