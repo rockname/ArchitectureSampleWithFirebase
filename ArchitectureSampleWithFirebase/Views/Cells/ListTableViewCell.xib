@@ -19,13 +19,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017/12/20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgZ-oz-AiG">
-                        <rect key="frame" x="5" y="10" width="85" height="20.5"/>
+                        <rect key="frame" x="10" y="10" width="85" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="content" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wg-l3-rjN">
-                        <rect key="frame" x="95" y="10" width="59" height="24"/>
+                        <rect key="frame" x="100" y="10" width="59" height="24"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="dAC-2X-day"/>
                         </constraints>
@@ -37,7 +37,7 @@
                 <constraints>
                     <constraint firstItem="2Wg-l3-rjN" firstAttribute="top" secondItem="MgZ-oz-AiG" secondAttribute="top" id="dSZ-sm-XQN"/>
                     <constraint firstItem="MgZ-oz-AiG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="jCR-UR-Dbt"/>
-                    <constraint firstItem="MgZ-oz-AiG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="sP2-e5-JXd"/>
+                    <constraint firstItem="MgZ-oz-AiG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="sP2-e5-JXd"/>
                     <constraint firstAttribute="bottom" secondItem="2Wg-l3-rjN" secondAttribute="bottom" constant="10" id="uqK-Iv-RUC"/>
                     <constraint firstItem="2Wg-l3-rjN" firstAttribute="leading" secondItem="MgZ-oz-AiG" secondAttribute="trailing" constant="5" id="vGM-HG-43g"/>
                 </constraints>

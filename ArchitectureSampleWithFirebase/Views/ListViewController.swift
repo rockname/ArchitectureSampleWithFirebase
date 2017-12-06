@@ -3,12 +3,14 @@ import UIKit
 class ListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addButton: UIButton!
     
     let presenter = ListPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeTableView()
+        initializeUI()
         presenter.losdPosts() {
             self.tableView.reloadData()
         }
@@ -47,6 +49,12 @@ class ListViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
     }
 
+    func initializeUI() {
+        addButton.layer.cornerRadius = addButton.bounds.width / 2.0
+        addButton.backgroundColor = UIColor.blue
+        addButton.tintColor = UIColor.white
+    }
+    
     func toPost() {
         self.performSegue(withIdentifier: R.segue.listViewController.toPost, sender: self)
     }
