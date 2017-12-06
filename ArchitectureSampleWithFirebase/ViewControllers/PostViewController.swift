@@ -3,55 +3,47 @@ import UIKit
 class PostViewController: UIViewController {
     @IBOutlet var textField: UITextField!
     
-    let postModel = PostModel()
-    
-    var isEditted = false
-    var selectedPost: Post!
+    var postModel: PostModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
+        initializeModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let post = self.selectedPost {
-            isEditted = true
+        if let post = postModel.selectedPost {
             textField.text = post.content
         }
     }
     
     @IBAction func postButtonTapped(sender: UIButton) {
         guard let content = textField.text else { return }
-        if isEditted {
-            postModel.update(Post(
-                id: selectedPost.id,
-                user: selectedPost.user,
-                content: content,
-                date: Date()
-            )) { error in
-                if let e = error {
-                    print("Error adding document: \(e)")
-                    return
-                }
-                print("Document added")
-            }
-            
-        } else {
-            postModel.create(with: content) { error in
-                if let e = error {
-                    print("Error adding document: \(e)")
-                    return
-                }
-                print("Document updated")
-            }
-        }
+        postModel.post(with: content)
         dismiss(animated: true)
     }
     
     func initializeUI() {
         textField.delegate = self
+    }
+    
+    func initializeModel() {
+        if postModel == nil {
+            postModel = PostModel()
+        }
+        postModel.delegate = self
+    }
+}
+
+extension PostViewController: PostModelDelegate {
+    func didPost(error: Error?) {
+        if let e = error {
+            print("Error adding document: \(e)")
+            return
+        }
+        print("Document added")
     }
 }
 

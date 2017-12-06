@@ -5,37 +5,29 @@ class LoginViewController: UIViewController {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
-    let authModel = AuthModel()
+    var authModel = AuthModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
+        initializeModel()
     }
     
     @IBAction func loginButtonTapped() {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
-        authModel.login(with: email, and: password) { (user, error) in
-            if let e = error {
-                print(e.localizedDescription)
-                return
-            }
-            
-            guard let loginUser = user else { return }
-            
-            if loginUser.isEmailVerified {
-                self.toList()
-            } else {
-                self.presentValidateAlert()
-            }
-        }
+        authModel.login(with: email, and: password)
     }
     
     func initializeUI() {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         passwordTextField.isSecureTextEntry  = true
+    }
+    func initializeModel() {
+        authModel = AuthModel()
+        authModel.delegate = self
     }
     
     func presentValidateAlert() {
@@ -49,6 +41,15 @@ class LoginViewController: UIViewController {
     }
 }
 
+extension LoginViewController: AuthModelDelegate {
+    func didLogIn(isEmailVerified: Bool) {
+        if isEmailVerified {
+            self.toList()
+        } else {
+            self.presentValidateAlert()
+        }
+    }
+}
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
