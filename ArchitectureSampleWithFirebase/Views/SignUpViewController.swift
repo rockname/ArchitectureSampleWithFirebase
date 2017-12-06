@@ -1,45 +1,43 @@
 import UIKit
-import Firebase
 
-class SignUpViewController: UIViewController {
+protocol SignUpViewInterface: class {
+    var email: String? { get }
+    var password: String? { get }
+    func toList()
+    func toLogin()
+}
+
+class SignUpViewController: UIViewController, SignUpViewInterface {
     
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
-    let presenter = SignUpPresenter()
+    var presenter: SignUpPresenter!
+    
+    var email: String? {
+        return self.emailTextField.text
+    }
+    var password: String? {
+        return self.passwordTextField.text
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
+        initializePresenter()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if presenter.isUserVerified { toList() }
+        presenter.viewWillAppear()
     }
     
     @IBAction func signUpButtonTapped() {
-        guard let email = emailTextField.text else  { return }
-        guard let password = passwordTextField.text else { return }
-        
-        presenter.signUp(with: email, and: password) { (user, error) in
-            if let e = error {
-                print(e.localizedDescription)
-                return
-            }
-            
-            user?.sendEmailVerification() { (error) in
-                if let e = error {
-                    print(e.localizedDescription)
-                    return
-                }
-                self.toLogin()
-            }
-        }
+        presenter.signUpButtonTapped()
     }
     @IBAction func loginButtonTapped() {
-        toLogin()
+        presenter.loginButtonTapped()
     }
     
     func initializeUI() {
@@ -48,17 +46,16 @@ class SignUpViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
     }
 
+    func initializePresenter() {
+        presenter = SignUpPresenter(with: self)
+    }
+    
     func toLogin() {
         self.performSegue(withIdentifier: R.segue.signUpViewController.toLogin, sender: self)
     }
 
     func toList() {
         self.performSegue(withIdentifier: R.segue.signUpViewController.toList, sender: self)
-    }
-    
-    func isUserVerified() -> Bool {
-        guard let user = Auth.auth().currentUser else { return false }
-        return user.isEmailVerified
     }
 }
 

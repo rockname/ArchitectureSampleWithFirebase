@@ -1,42 +1,46 @@
 import UIKit
 
-class ListViewController: UIViewController {
+protocol ListViewInterface: class {
+    func reloadData()
+    func toPost()
+}
+class ListViewController: UIViewController, ListViewInterface {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
     
-    let presenter = ListPresenter()
+    var presenter: ListPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeTableView()
         initializeUI()
-        presenter.losdPosts() {
-            self.tableView.reloadData()
-        }
+        initializePresenter()
+        presenter.loadPosts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        presenter.viewWillAppear()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == R.segue.listViewController.toPost.identifier {
             if let vc = segue.destination as? PostViewController,
                 let snap = presenter.selectedSnapshot {
-                vc.presenter.selectedPost = Post(
+                let postPresenter = PostPresenter(with: vc, and: Post(
                     id: snap.documentID,
                     user: snap["user"] as! String,
                     content: snap["content"] as! String,
                     date: snap["date"] as! Date
-                )
+                ))
+                vc.presenter = postPresenter
             }
         }
     }
     
     @IBAction func addButtonTapped() {
-        presenter.selectedSnapshot = nil
-        self.toPost()
+        presenter.addButtonTapped()
     }
     
     func initializeTableView() {
@@ -53,6 +57,14 @@ class ListViewController: UIViewController {
         addButton.layer.cornerRadius = addButton.bounds.width / 2.0
         addButton.backgroundColor = UIColor.blue
         addButton.tintColor = UIColor.white
+    }
+    
+    func initializePresenter() {
+        presenter = ListPresenter(with: self)
+    }
+    
+    func reloadData() {
+        tableView.reloadData()
     }
     
     func toPost() {
@@ -77,7 +89,6 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.select(at: indexPath.row)
-        self.toPost()
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

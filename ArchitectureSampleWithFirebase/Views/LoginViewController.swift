@@ -1,42 +1,45 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+protocol LoginViewInterface: class {
+    var email: String? { get }
+    var password: String? { get }
+    func toList()
+    func presentValidateAlert()
+}
+
+class LoginViewController: UIViewController, LoginViewInterface {
     
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
-    let presenter = LoginPresenter()
+    var presenter: LoginPresenter!
+    
+    var email: String? {
+        return emailTextField.text
+    }
+    var password: String? {
+        return passwordTextField.text
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
+        initializePresenter()
     }
     
     @IBAction func loginButtonTapped() {
-        guard let email = emailTextField.text else { return }
-        guard let password = passwordTextField.text else { return }
-        
-        presenter.login(with: email, and: password) { (user, error) in
-            if let e = error {
-                print(e.localizedDescription)
-                return
-            }
-            
-            guard let loginUser = user else { return }
-            
-            if loginUser.isEmailVerified {
-                self.toList()
-            } else {
-                self.presentValidateAlert()
-            }
-        }
+        presenter.loginButtonTapped()
     }
     
     func initializeUI() {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         passwordTextField.isSecureTextEntry  = true
+    }
+    
+    func initializePresenter() {
+        presenter = LoginPresenter(with: self)
     }
     
     func presentValidateAlert() {

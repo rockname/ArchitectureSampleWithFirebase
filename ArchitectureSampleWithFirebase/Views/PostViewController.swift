@@ -1,39 +1,46 @@
 import UIKit
 import Firebase
 
-class PostViewController: UIViewController {
+protocol PostViewInterface: class {
+    func toList()
+}
+
+class PostViewController: UIViewController, PostViewInterface {
+    
     @IBOutlet var textField: UITextField!
     
-    let presenter = PostPresenter()
+    var presenter: PostPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
+        initializePresenter()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let snapshot = presenter.selectedPost {
-            textField.text = snapshot["content"] as? String
+        if let post = presenter.selectedPost {
+            textField.text = post.content
         }
     }
     
     @IBAction func postButtonTapped(sender: UIButton) {
         guard let content = textField.text else { return }
 
-        presenter.post(content) { error in
-            if let e = error {
-                print("Error adding document: \(e)")
-                return
-            }
-            print("Document added")
-        }
-        dismiss(animated: true)
+        presenter.post(content)
     }
     
     func initializeUI() {
         textField.delegate = self
+    }
+    
+    func initializePresenter() {
+        if presenter == nil { presenter = PostPresenter(with: self) }
+    }
+    
+    func toList() {
+        dismiss(animated: true)
     }
 }
 

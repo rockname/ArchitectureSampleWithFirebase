@@ -2,17 +2,36 @@ import Firebase
 
 class SignUpPresenter {
     
-    let authModel = AuthModel()
+    let authModel: AuthModel
+    weak var view: SignUpViewInterface?
     
-    var isUserVerified: Bool = {
-        return self.authModel.isUserVerified()
+    init(with view: SignUpViewInterface) {
+        self.view = view
+        self.authModel = AuthModel()
+        authModel.delegate = self
     }
     
-    init() {
+    func viewWillAppear() {
+        if authModel.isUserVerified() { view?.toList() }
+    }
+    
+    func signUpButtonTapped() {
+        guard let email = view?.email else  { return }
+        guard let password = view?.password else { return }
         
+        authModel.signUp(with: email, and: password)
     }
     
-    func signUp(with email: String, and password: String, completion: ((User?, Error?) -> Void)?) {
-        authModel.signUp(with: email, and: password, completion: completion)
+    func loginButtonTapped() {
+        view?.toLogin()
+    }
+}
+
+extension SignUpPresenter: AuthModelDelegate {
+    func didSignUp(newUser: User) {
+        authModel.sendEmailVerification(to: newUser)
+    }
+    func emailVerificationDidSend() {
+        view?.toLogin()
     }
 }
