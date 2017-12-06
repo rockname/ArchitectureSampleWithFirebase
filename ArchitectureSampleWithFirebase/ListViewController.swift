@@ -4,6 +4,7 @@ import Firebase
 class ListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addButton: UIButton!
     
     let db = Firestore.firestore()
     
@@ -16,6 +17,7 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeTableView()
+        inittializeUI()
         read()
     }
     
@@ -47,6 +49,12 @@ class ListViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
     }
 
+    func inittializeUI() {
+        addButton.layer.cornerRadius = addButton.bounds.height / 2.0
+        addButton.backgroundColor = UIColor.blue
+        addButton.tintColor = UIColor.white
+    }
+    
     func read()  {
         let options = QueryListenOptions()
         options.includeQueryMetadataChanges(true)
