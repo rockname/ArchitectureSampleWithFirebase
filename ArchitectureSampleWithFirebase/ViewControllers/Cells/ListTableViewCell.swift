@@ -1,11 +1,3 @@
-//
-//  ListTableViewCell.swift
-//  SampleFirebase
-//
-//  Created by Yuki Iwana on 2017/12/01.
-//  Copyright © 2017年 rockname. All rights reserved.
-//
-
 import UIKit
 
 class ListTableViewCell: UITableViewCell {

@@ -21,6 +21,7 @@
 		4C4F5E5C1FD3F1DB00AC40F3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */; };
 		4C4F5E601FD4165900AC40F3 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4F5E5F1FD4165900AC40F3 /* PostModel.swift */; };
 		4C4F5E631FD41C1500AC40F3 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4F5E621FD41C1500AC40F3 /* AuthModel.swift */; };
+		4C8959751FD7CBFA00B79CDC /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8959741FD7CBFA00B79CDC /* ListModel.swift */; };
 		5E48A51588F5AA744DA8E726 /* Pods_ArchitectureSampleWithFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F3BC4701245F536E3E013D /* Pods_ArchitectureSampleWithFirebase.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		4C4F5E5F1FD4165900AC40F3 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		4C4F5E621FD41C1500AC40F3 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		4C8959741FD7CBFA00B79CDC /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		9C656F36F39B7C52E8DB0138 /* Pods-ArchitectureSampleWithFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSampleWithFirebase.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArchitectureSampleWithFirebase/Pods-ArchitectureSampleWithFirebase.release.xcconfig"; sourceTree = "<group>"; };
 		F6942778E1CB5D48087C10AD /* Pods-ArchitectureSampleWithFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSampleWithFirebase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArchitectureSampleWithFirebase/Pods-ArchitectureSampleWithFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,7 +114,7 @@
 		4C4F5E5D1FD4159900AC40F3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4C4F5E5E1FD415BC00AC40F3 /* Views */,
+				4C4F5E5E1FD415BC00AC40F3 /* Cells */,
 				4C45835D1FC957FB002AFB69 /* PostViewController.swift */,
 				4C45836E1FC96426002AFB69 /* SignUpViewController.swift */,
 				4C4583701FC96432002AFB69 /* LoginViewController.swift */,
@@ -121,13 +123,13 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		4C4F5E5E1FD415BC00AC40F3 /* Views */ = {
+		4C4F5E5E1FD415BC00AC40F3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				4C138D951FD1062500CC3114 /* ListTableViewCell.swift */,
 				4C138D961FD1062500CC3114 /* ListTableViewCell.xib */,
 			);
-			path = Views;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		4C4F5E611FD4165E00AC40F3 /* Models */ = {
@@ -135,6 +137,7 @@
 			children = (
 				4C4F5E5F1FD4165900AC40F3 /* PostModel.swift */,
 				4C4F5E621FD41C1500AC40F3 /* AuthModel.swift */,
+				4C8959741FD7CBFA00B79CDC /* ListModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				4C45835C1FC957FB002AFB69 /* AppDelegate.swift in Sources */,
 				4C138D971FD1062500CC3114 /* ListTableViewCell.swift in Sources */,
 				4C4F5E631FD41C1500AC40F3 /* AuthModel.swift in Sources */,
+				4C8959751FD7CBFA00B79CDC /* ListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
