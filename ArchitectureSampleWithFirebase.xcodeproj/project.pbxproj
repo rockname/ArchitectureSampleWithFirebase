@@ -7,49 +7,63 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C138D941FD0FEE200CC3114 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C138D931FD0FEE200CC3114 /* ListViewController.swift */; };
-		4C138D971FD1062500CC3114 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C138D951FD1062500CC3114 /* ListTableViewCell.swift */; };
-		4C138D981FD1062500CC3114 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C138D961FD1062500CC3114 /* ListTableViewCell.xib */; };
+		4C3D43731FDACF40008C5F01 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43671FDACF38008C5F01 /* ListPresenter.swift */; };
+		4C3D43741FDACF40008C5F01 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43681FDACF38008C5F01 /* LoginPresenter.swift */; };
+		4C3D43751FDACF40008C5F01 /* PostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43691FDACF38008C5F01 /* PostPresenter.swift */; };
+		4C3D43761FDACF40008C5F01 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D436A1FDACF38008C5F01 /* SignUpPresenter.swift */; };
+		4C3D43771FDACF49008C5F01 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D436D1FDACF38008C5F01 /* ListTableViewCell.swift */; };
+		4C3D43781FDACF49008C5F01 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C3D436E1FDACF38008C5F01 /* ListTableViewCell.xib */; };
+		4C3D43791FDACF49008C5F01 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D436F1FDACF38008C5F01 /* ListViewController.swift */; };
+		4C3D437A1FDACF49008C5F01 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43701FDACF38008C5F01 /* LoginViewController.swift */; };
+		4C3D437B1FDACF49008C5F01 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43711FDACF38008C5F01 /* PostViewController.swift */; };
+		4C3D437C1FDACF49008C5F01 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43721FDACF38008C5F01 /* SignUpViewController.swift */; };
+		4C3D437D1FDACF5B008C5F01 /* FireBaseAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D435E1FDACF29008C5F01 /* FireBaseAuthRepository.swift */; };
+		4C3D437E1FDACF5E008C5F01 /* FireBasePostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D435F1FDACF29008C5F01 /* FireBasePostRepository.swift */; };
+		4C3D437F1FDACF60008C5F01 /* ListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43641FDACF30008C5F01 /* ListUseCase.swift */; };
+		4C3D43811FDACF9C008C5F01 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43801FDACF9C008C5F01 /* Post.swift */; };
+		4C3D43831FDACFDD008C5F01 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43821FDACFDD008C5F01 /* AuthRepository.swift */; };
+		4C3D43851FDACFF0008C5F01 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43841FDACFF0008C5F01 /* PostRepository.swift */; };
+		4C3D43871FDAD008008C5F01 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43861FDAD008008C5F01 /* LoginUseCase.swift */; };
+		4C3D43891FDAD014008C5F01 /* PostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43881FDAD014008C5F01 /* PostUseCase.swift */; };
+		4C3D438B1FDAD020008C5F01 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D438A1FDAD020008C5F01 /* SignUpUseCase.swift */; };
 		4C45835C1FC957FB002AFB69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45835B1FC957FB002AFB69 /* AppDelegate.swift */; };
-		4C45835E1FC957FB002AFB69 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45835D1FC957FB002AFB69 /* PostViewController.swift */; };
 		4C4583611FC957FB002AFB69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C45835F1FC957FB002AFB69 /* Main.storyboard */; };
 		4C4583631FC957FB002AFB69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C4583621FC957FB002AFB69 /* Assets.xcassets */; };
 		4C4583661FC957FB002AFB69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4583641FC957FB002AFB69 /* LaunchScreen.storyboard */; };
-		4C45836F1FC96426002AFB69 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45836E1FC96426002AFB69 /* SignUpViewController.swift */; };
-		4C4583711FC96432002AFB69 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4583701FC96432002AFB69 /* LoginViewController.swift */; };
 		4C4F5E5A1FD3F1B900AC40F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */; };
 		4C4F5E5C1FD3F1DB00AC40F3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */; };
-		4C99084A1FD43E60008C4442 /* PostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9908491FD43E60008C4442 /* PostPresenter.swift */; };
-		4C99084D1FD43E89008C4442 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C99084C1FD43E89008C4442 /* PostModel.swift */; };
-		4C9908501FD43F6C008C4442 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C99084F1FD43F6C008C4442 /* ListPresenter.swift */; };
-		4C9908521FD44B55008C4442 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9908511FD44B55008C4442 /* LoginPresenter.swift */; };
-		4C9908541FD44B68008C4442 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9908531FD44B68008C4442 /* SignUpPresenter.swift */; };
-		4C9908561FD44B76008C4442 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9908551FD44B76008C4442 /* AuthModel.swift */; };
 		5E48A51588F5AA744DA8E726 /* Pods_ArchitectureSampleWithFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F3BC4701245F536E3E013D /* Pods_ArchitectureSampleWithFirebase.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		47F3BC4701245F536E3E013D /* Pods_ArchitectureSampleWithFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArchitectureSampleWithFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C138D931FD0FEE200CC3114 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		4C138D951FD1062500CC3114 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
-		4C138D961FD1062500CC3114 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
+		4C3D435E1FDACF29008C5F01 /* FireBaseAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseAuthRepository.swift; sourceTree = "<group>"; };
+		4C3D435F1FDACF29008C5F01 /* FireBasePostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBasePostRepository.swift; sourceTree = "<group>"; };
+		4C3D43641FDACF30008C5F01 /* ListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUseCase.swift; sourceTree = "<group>"; };
+		4C3D43671FDACF38008C5F01 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
+		4C3D43681FDACF38008C5F01 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		4C3D43691FDACF38008C5F01 /* PostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPresenter.swift; sourceTree = "<group>"; };
+		4C3D436A1FDACF38008C5F01 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
+		4C3D436D1FDACF38008C5F01 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		4C3D436E1FDACF38008C5F01 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
+		4C3D436F1FDACF38008C5F01 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		4C3D43701FDACF38008C5F01 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4C3D43711FDACF38008C5F01 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		4C3D43721FDACF38008C5F01 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4C3D43801FDACF9C008C5F01 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		4C3D43821FDACFDD008C5F01 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		4C3D43841FDACFF0008C5F01 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
+		4C3D43861FDAD008008C5F01 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		4C3D43881FDAD014008C5F01 /* PostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUseCase.swift; sourceTree = "<group>"; };
+		4C3D438A1FDAD020008C5F01 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		4C4583581FC957FB002AFB69 /* ArchitectureSampleWithFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureSampleWithFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C45835B1FC957FB002AFB69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4C45835D1FC957FB002AFB69 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		4C4583601FC957FB002AFB69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C4583621FC957FB002AFB69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C4583651FC957FB002AFB69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C4583671FC957FB002AFB69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4C45836E1FC96426002AFB69 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		4C4583701FC96432002AFB69 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
-		4C9908491FD43E60008C4442 /* PostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPresenter.swift; sourceTree = "<group>"; };
-		4C99084C1FD43E89008C4442 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
-		4C99084F1FD43F6C008C4442 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
-		4C9908511FD44B55008C4442 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		4C9908531FD44B68008C4442 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
-		4C9908551FD44B76008C4442 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		9C656F36F39B7C52E8DB0138 /* Pods-ArchitectureSampleWithFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSampleWithFirebase.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArchitectureSampleWithFirebase/Pods-ArchitectureSampleWithFirebase.release.xcconfig"; sourceTree = "<group>"; };
 		F6942778E1CB5D48087C10AD /* Pods-ArchitectureSampleWithFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSampleWithFirebase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArchitectureSampleWithFirebase/Pods-ArchitectureSampleWithFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +97,102 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4C3D435C1FDACF29008C5F01 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4C3D435D1FDACF29008C5F01 /* FirebaseRepositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		4C3D435D1FDACF29008C5F01 /* FirebaseRepositories */ = {
+			isa = PBXGroup;
+			children = (
+				4C3D435E1FDACF29008C5F01 /* FireBaseAuthRepository.swift */,
+				4C3D435F1FDACF29008C5F01 /* FireBasePostRepository.swift */,
+			);
+			path = FirebaseRepositories;
+			sourceTree = "<group>";
+		};
+		4C3D43601FDACF30008C5F01 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				4C3D43611FDACF30008C5F01 /* Entities */,
+				4C3D43621FDACF30008C5F01 /* Repositories */,
+				4C3D43631FDACF30008C5F01 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		4C3D43611FDACF30008C5F01 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				4C3D43801FDACF9C008C5F01 /* Post.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		4C3D43621FDACF30008C5F01 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				4C3D43821FDACFDD008C5F01 /* AuthRepository.swift */,
+				4C3D43841FDACFF0008C5F01 /* PostRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		4C3D43631FDACF30008C5F01 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				4C3D43641FDACF30008C5F01 /* ListUseCase.swift */,
+				4C3D43861FDAD008008C5F01 /* LoginUseCase.swift */,
+				4C3D43881FDAD014008C5F01 /* PostUseCase.swift */,
+				4C3D438A1FDAD020008C5F01 /* SignUpUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		4C3D43651FDACF38008C5F01 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				4C3D43661FDACF38008C5F01 /* Presenters */,
+				4C3D436B1FDACF38008C5F01 /* Views */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		4C3D43661FDACF38008C5F01 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				4C3D43671FDACF38008C5F01 /* ListPresenter.swift */,
+				4C3D43681FDACF38008C5F01 /* LoginPresenter.swift */,
+				4C3D43691FDACF38008C5F01 /* PostPresenter.swift */,
+				4C3D436A1FDACF38008C5F01 /* SignUpPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		4C3D436B1FDACF38008C5F01 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C3D436C1FDACF38008C5F01 /* Cells */,
+				4C3D436F1FDACF38008C5F01 /* ListViewController.swift */,
+				4C3D43701FDACF38008C5F01 /* LoginViewController.swift */,
+				4C3D43711FDACF38008C5F01 /* PostViewController.swift */,
+				4C3D43721FDACF38008C5F01 /* SignUpViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4C3D436C1FDACF38008C5F01 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4C3D436D1FDACF38008C5F01 /* ListTableViewCell.swift */,
+				4C3D436E1FDACF38008C5F01 /* ListTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		4C45834F1FC957FB002AFB69 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +214,9 @@
 		4C45835A1FC957FB002AFB69 /* ArchitectureSampleWithFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				4C3D43651FDACF38008C5F01 /* Presentation */,
+				4C3D43601FDACF30008C5F01 /* Domain */,
+				4C3D435C1FDACF29008C5F01 /* Data */,
 				4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */,
 				4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */,
 				4C4583671FC957FB002AFB69 /* Info.plist */,
@@ -111,52 +224,8 @@
 				4C4583641FC957FB002AFB69 /* LaunchScreen.storyboard */,
 				4C4583621FC957FB002AFB69 /* Assets.xcassets */,
 				4C45835B1FC957FB002AFB69 /* AppDelegate.swift */,
-				4C9908471FD43E1C008C4442 /* Views */,
-				4C99084B1FD43E6C008C4442 /* Presenters */,
-				4C99084E1FD43E8E008C4442 /* Models */,
 			);
 			path = ArchitectureSampleWithFirebase;
-			sourceTree = "<group>";
-		};
-		4C9908471FD43E1C008C4442 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4C45835D1FC957FB002AFB69 /* PostViewController.swift */,
-				4C45836E1FC96426002AFB69 /* SignUpViewController.swift */,
-				4C4583701FC96432002AFB69 /* LoginViewController.swift */,
-				4C138D931FD0FEE200CC3114 /* ListViewController.swift */,
-				4C9908481FD43E2E008C4442 /* Cells */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		4C9908481FD43E2E008C4442 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				4C138D951FD1062500CC3114 /* ListTableViewCell.swift */,
-				4C138D961FD1062500CC3114 /* ListTableViewCell.xib */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		4C99084B1FD43E6C008C4442 /* Presenters */ = {
-			isa = PBXGroup;
-			children = (
-				4C9908491FD43E60008C4442 /* PostPresenter.swift */,
-				4C99084F1FD43F6C008C4442 /* ListPresenter.swift */,
-				4C9908511FD44B55008C4442 /* LoginPresenter.swift */,
-				4C9908531FD44B68008C4442 /* SignUpPresenter.swift */,
-			);
-			path = Presenters;
-			sourceTree = "<group>";
-		};
-		4C99084E1FD43E8E008C4442 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				4C99084C1FD43E89008C4442 /* PostModel.swift */,
-				4C9908551FD44B76008C4442 /* AuthModel.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,10 +292,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C4583661FC957FB002AFB69 /* LaunchScreen.storyboard in Resources */,
-				4C138D981FD1062500CC3114 /* ListTableViewCell.xib in Resources */,
 				4C4F5E5A1FD3F1B900AC40F3 /* GoogleService-Info.plist in Resources */,
 				4C4583631FC957FB002AFB69 /* Assets.xcassets in Resources */,
 				4C4583611FC957FB002AFB69 /* Main.storyboard in Resources */,
+				4C3D43781FDACF49008C5F01 /* ListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +342,8 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -287,6 +358,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
@@ -324,19 +397,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C9908501FD43F6C008C4442 /* ListPresenter.swift in Sources */,
-				4C4583711FC96432002AFB69 /* LoginViewController.swift in Sources */,
-				4C99084D1FD43E89008C4442 /* PostModel.swift in Sources */,
-				4C9908561FD44B76008C4442 /* AuthModel.swift in Sources */,
+				4C3D437C1FDACF49008C5F01 /* SignUpViewController.swift in Sources */,
+				4C3D43891FDAD014008C5F01 /* PostUseCase.swift in Sources */,
+				4C3D437A1FDACF49008C5F01 /* LoginViewController.swift in Sources */,
+				4C3D43771FDACF49008C5F01 /* ListTableViewCell.swift in Sources */,
+				4C3D43761FDACF40008C5F01 /* SignUpPresenter.swift in Sources */,
+				4C3D437E1FDACF5E008C5F01 /* FireBasePostRepository.swift in Sources */,
+				4C3D43751FDACF40008C5F01 /* PostPresenter.swift in Sources */,
+				4C3D437D1FDACF5B008C5F01 /* FireBaseAuthRepository.swift in Sources */,
+				4C3D437B1FDACF49008C5F01 /* PostViewController.swift in Sources */,
+				4C3D43741FDACF40008C5F01 /* LoginPresenter.swift in Sources */,
+				4C3D43811FDACF9C008C5F01 /* Post.swift in Sources */,
 				4C4F5E5C1FD3F1DB00AC40F3 /* R.generated.swift in Sources */,
-				4C9908521FD44B55008C4442 /* LoginPresenter.swift in Sources */,
-				4C45836F1FC96426002AFB69 /* SignUpViewController.swift in Sources */,
-				4C9908541FD44B68008C4442 /* SignUpPresenter.swift in Sources */,
-				4C45835E1FC957FB002AFB69 /* PostViewController.swift in Sources */,
-				4C99084A1FD43E60008C4442 /* PostPresenter.swift in Sources */,
-				4C138D941FD0FEE200CC3114 /* ListViewController.swift in Sources */,
+				4C3D43831FDACFDD008C5F01 /* AuthRepository.swift in Sources */,
+				4C3D438B1FDAD020008C5F01 /* SignUpUseCase.swift in Sources */,
+				4C3D43731FDACF40008C5F01 /* ListPresenter.swift in Sources */,
+				4C3D437F1FDACF60008C5F01 /* ListUseCase.swift in Sources */,
+				4C3D43851FDACFF0008C5F01 /* PostRepository.swift in Sources */,
+				4C3D43791FDACF49008C5F01 /* ListViewController.swift in Sources */,
 				4C45835C1FC957FB002AFB69 /* AppDelegate.swift in Sources */,
-				4C138D971FD1062500CC3114 /* ListTableViewCell.swift in Sources */,
+				4C3D43871FDAD008008C5F01 /* LoginUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -75,6 +75,9 @@ PODS:
   - R.swift (4.0.0):
     - R.swift.Library (~> 4.0.0)
   - R.swift.Library (4.0.0)
+  - RxCocoa (4.0.0):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.0.0)
 
 DEPENDENCIES:
   - Firebase (= 4.7.0)
@@ -82,6 +85,8 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
   - R.swift (= 4.0.0)
+  - RxCocoa (= 4.0.0)
+  - RxSwift (= 4.0.0)
 
 SPEC CHECKSUMS:
   BoringSSL: 84318770d120503ab1a6aaf1df777c5ca053697e
@@ -97,12 +102,14 @@ SPEC CHECKSUMS:
   gRPC-ProtoRPC: b7259f51cbc19b77c7a38d96f52a00c3a4ea1637
   gRPC-RxLibrary: 4f46343e74e74a7ee8373ffeeaf772dfb330cbd7
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
-  leveldb-library: 4f9eedf84ab46b4fa3b7893bf30714b2a1a74022
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
+  RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
+  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
 
-PODFILE CHECKSUM: 3c59d6c1a86cb4ab2cf84f54f43f70d16711df37
+PODFILE CHECKSUM: 2b085d2bde269b72bdc3d87bba67a9b1e061b505
 
 COCOAPODS: 1.3.1

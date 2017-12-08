@@ -12,4 +12,6 @@ target 'ArchitectureSampleWithFirebase' do
   pod 'Firebase/Firestore'
   
   pod 'R.swift', '4.0.0'
+  pod 'RxSwift', '4.0.0'
+  pod 'RxCocoa', '4.0.0'
 end
