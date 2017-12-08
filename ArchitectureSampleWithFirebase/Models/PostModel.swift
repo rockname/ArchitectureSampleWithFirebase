@@ -16,12 +16,6 @@ class PostModel {
     
     var delegate: PostModelDelegate?
 
-    var contentArray: [DocumentSnapshot] = []
-    var snapshot: QuerySnapshot?
-    var selectedSnapshot: DocumentSnapshot?
-    
-    var listener: ListenerRegistration?
-    
     init() {
         self.db = Firestore.firestore()
         db.settings.isPersistenceEnabled = true

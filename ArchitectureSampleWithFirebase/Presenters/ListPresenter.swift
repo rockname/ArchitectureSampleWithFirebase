@@ -5,7 +5,6 @@ class ListPresenter {
     let postModel: PostModel
     
     var contentArray: [DocumentSnapshot] = []
-    var snapshot: QuerySnapshot?
     var selectedSnapshot: DocumentSnapshot?
     
     var listener: ListenerRegistration?
