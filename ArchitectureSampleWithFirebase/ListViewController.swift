@@ -9,7 +9,6 @@ class ListViewController: UIViewController {
     let db = Firestore.firestore()
     
     var contentArray: [DocumentSnapshot] = []
-    var snapshot: QuerySnapshot?
     var selectedSnapshot: DocumentSnapshot?
     
     var listner: ListenerRegistration?
@@ -70,8 +69,7 @@ class ListViewController: UIViewController {
                     }
                 }
                 print("Current data: \(snap)")
-                self.snapshot = snap
-                self.reload()
+                self.reload(with: snap)
         }
     }
     
@@ -80,15 +78,12 @@ class ListViewController: UIViewController {
         contentArray.remove(at: indexPath.row)
     }
     
-    func reload() {
-        if let snap = snapshot,
-            !snap.isEmpty {
-            print(snap)
+    func reload(with snap: QuerySnapshot) {
+        if !snap.isEmpty {
             contentArray.removeAll()
             for item in snap.documents {
                 contentArray.append(item)
             }
-            db.settings.isPersistenceEnabled = true
             self.tableView.reloadData()
         }
     }

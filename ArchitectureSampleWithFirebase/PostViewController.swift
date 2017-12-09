@@ -6,8 +6,7 @@ class PostViewController: UIViewController {
     
     let db = Firestore.firestore()
     
-    var isEditted = false
-    var selectedSnapshot: DocumentSnapshot!
+    var selectedSnapshot: DocumentSnapshot?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,13 +17,17 @@ class PostViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if let snapshot = self.selectedSnapshot {
-            isEditted = true
             textField.text = snapshot["content"] as? String
         }
     }
     
     @IBAction func postButtonTapped(sender: UIButton) {
-        isEditted ? update() : create()
+        if selectedSnapshot != nil {
+            update()
+            
+        } else {
+            create()
+        }
         
         dismiss(animated: true)
     }
@@ -50,8 +53,7 @@ class PostViewController: UIViewController {
     }
     
     func update() {
-        db.collection("posts").document(selectedSnapshot.documentID).setData([
-            "user": (Auth.auth().currentUser?.uid)!,
+        db.collection("posts").document(selectedSnapshot!.documentID).updateData([
             "content": self.textField.text!,
             "date": Date()
         ]) { error in
