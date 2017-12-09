@@ -4,15 +4,16 @@ import Firebase
     @objc optional func didSignUp(newUser: User)
     @objc optional func didLogIn(isEmailVerified: Bool)
     @objc optional func emailVerificationDidSend()
+    func errorDidOccur(error: Error)
 }
 
 class AuthModel {
-    var delegate: AuthModelDelegate?
+    weak var delegate: AuthModelDelegate?
     
     func signUp(with email: String, and password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { [unowned self] (user, error) in
             if let e = error {
-                print(e.localizedDescription)
+                self.delegate?.errorDidOccur(error: e)
                 return
             }
             guard let user = user else { return }
@@ -22,7 +23,7 @@ class AuthModel {
     func sendEmailVerification(to user: User) { 
         user.sendEmailVerification() { [unowned self] error in
             if let e = error {
-                print(e.localizedDescription)
+                self.delegate?.errorDidOccur(error: e)
                 return
             }
             self.delegate?.emailVerificationDidSend?()
@@ -31,7 +32,7 @@ class AuthModel {
     func login(with email: String, and password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { [unowned self] (user, error) in
             if let e = error {
-                print(e.localizedDescription)
+                self.delegate?.errorDidOccur(error: e)
                 return
             }
             guard let loginUser = user else { return }

@@ -9,15 +9,17 @@ struct Post {
 }
 
 protocol PostModelDelegate: class {
-    func didPost(error: Error?)
+    func didPost()
+    func errorDidOccur(error: Error)
 }
+
 class PostModel {
     
     let db: Firestore
     
     let selectedPost: Post?
     
-    var delegate: PostModelDelegate?
+    weak var delegate: PostModelDelegate?
     
     init(with selectedPost: Post? = nil) {
         self.selectedPost = selectedPost
@@ -28,10 +30,14 @@ class PostModel {
     func post(with content: String) {
         if let post = selectedPost {
             db.collection("posts").document(post.id).updateData([
-                "content": post.content,
-                "date": post.date
+                "content": content,
+                "date": Date()
             ]) { [unowned self] error in
-                self.delegate?.didPost(error: error)
+                if let e = error {
+                    self.delegate?.errorDidOccur(error: e)
+                    return
+                }
+                self.delegate?.didPost()
             }
         } else {
             db.collection("posts").addDocument(data: [
@@ -39,7 +45,11 @@ class PostModel {
                 "content": content,
                 "date": Date()
             ]) { [unowned self] error in
-                self.delegate?.didPost(error: error)
+                if let e = error {
+                    self.delegate?.errorDidOccur(error: e)
+                    return
+                }
+                self.delegate?.didPost()
             }
         }
     }

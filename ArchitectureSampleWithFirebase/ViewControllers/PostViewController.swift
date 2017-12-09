@@ -38,12 +38,11 @@ class PostViewController: UIViewController {
 }
 
 extension PostViewController: PostModelDelegate {
-    func didPost(error: Error?) {
-        if let e = error {
-            print("Error adding document: \(e)")
-            return
-        }
+    func didPost() {
         print("Document added")
+    }
+    func errorDidOccur(error: Error) {
+        print(error.localizedDescription)
     }
 }
 

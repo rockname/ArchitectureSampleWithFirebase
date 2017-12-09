@@ -49,6 +49,9 @@ extension LoginViewController: AuthModelDelegate {
             self.presentValidateAlert()
         }
     }
+    func errorDidOccur(error: Error) {
+        print(error.localizedDescription)
+    }
 }
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

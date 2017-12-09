@@ -57,6 +57,9 @@ extension SignUpViewController: AuthModelDelegate {
     func emailVerificationDidSend() {
         toLogin()
     }
+    func errorDidOccur(error: Error) {
+        print(error.localizedDescription)
+    }
 }
 
 extension SignUpViewController: UITextFieldDelegate {
