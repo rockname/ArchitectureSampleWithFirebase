@@ -22,7 +22,6 @@ class PostViewController: UIViewController {
     @IBAction func postButtonTapped(sender: UIButton) {
         guard let content = textField.text else { return }
         postModel.post(with: content)
-        dismiss(animated: true)
     }
     
     func initializeUI() {
@@ -40,6 +39,7 @@ class PostViewController: UIViewController {
 extension PostViewController: PostModelDelegate {
     func didPost() {
         print("Document added")
+        dismiss(animated: true)
     }
     func errorDidOccur(error: Error) {
         print(error.localizedDescription)
