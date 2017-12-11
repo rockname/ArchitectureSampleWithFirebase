@@ -7,30 +7,31 @@ protocol ListModelDelegate: class {
 
 class ListModel {
     let db: Firestore = Firestore.firestore()
-
+    
     var contentArray: [DocumentSnapshot] = []
     var selectedSnapshot: DocumentSnapshot?
     
     var listener: ListenerRegistration?
-
+    
     weak var delegate: ListModelDelegate?
     
     func read() {
         let options = QueryListenOptions()
         options.includeQueryMetadataChanges(true)
-        self.listener = db.collection("posts").addSnapshotListener(options: options) { [unowned self] snapshot, error in
-            guard let snap = snapshot else {
-                print("Error fetching document: \(error!)")
-                self.delegate?.errorDidOccur(error: error!)
-                return
-            }
-            for diff in snap.documentChanges {
-                if diff.type == .added {
-                    print("New data: \(diff.document.data())")
+        self.listener = db.collection("posts").order(by: "date")
+            .addSnapshotListener(options: options) { [unowned self] snapshot, error in
+                guard let snap = snapshot else {
+                    print("Error fetching document: \(error!)")
+                    self.delegate?.errorDidOccur(error: error!)
+                    return
                 }
-            }
-            print("Current data: \(snap)")
-            self.reload(with: snap)
+                for diff in snap.documentChanges {
+                    if diff.type == .added {
+                        print("New data: \(diff.document.data())")
+                    }
+                }
+                print("Current data: \(snap)")
+                self.reload(with: snap)
         }
     }
     
