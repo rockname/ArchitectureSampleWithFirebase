@@ -57,8 +57,8 @@ class ListViewController: UIViewController {
     func read()  {
         let options = QueryListenOptions()
         options.includeQueryMetadataChanges(true)
-        listner = db.collection("posts")
-            .addSnapshotListener(options: options) { snapshot, error in
+        listner = db.collection("posts").order(by: "date")
+            .addSnapshotListener(options: options) { [unowned self] snapshot, error in
                 guard let snap = snapshot else {
                     print("Error fetching document: \(error!)")
                     return
