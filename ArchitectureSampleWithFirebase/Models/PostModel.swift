@@ -34,7 +34,8 @@ class PostModel {
     func read() -> ListenerRegistration {
         let options = QueryListenOptions()
         options.includeQueryMetadataChanges(true)
-        return db.collection("posts").addSnapshotListener(options: options) { snapshot, error in
+        return db.collection("posts").order(by: "date")
+            .addSnapshotListener(options: options) { snapshot, error in
             guard let snap = snapshot else {
                 print("Error fetching document: \(error!)")
                 return
