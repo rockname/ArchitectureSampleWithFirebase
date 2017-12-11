@@ -28,8 +28,6 @@ class PostViewController: UIViewController {
         } else {
             create()
         }
-        
-        dismiss(animated: true)
     }
     
     func initializeUI() {
@@ -43,12 +41,13 @@ class PostViewController: UIViewController {
             "user": (Auth.auth().currentUser?.uid)!,
             "content": text,
             "date": Date()
-        ]) { error in
+        ]) { [unowned self] error in
             if let e = error {
                 print("Error adding document: \(e)")
                 return
             }
             print("Document added")
+            self.dismiss(animated: true)
         }
     }
     
@@ -56,12 +55,13 @@ class PostViewController: UIViewController {
         db.collection("posts").document(selectedSnapshot!.documentID).updateData([
             "content": self.textField.text!,
             "date": Date()
-        ]) { error in
+        ]) { [unowned self] error in
             if let e = error {
                 print("Error adding document: \(e)")
                 return
             }
             print("Document updated")
+            self.dismiss(animated: true)
         }
     }
 }

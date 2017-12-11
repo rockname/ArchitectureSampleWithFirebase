@@ -48,7 +48,7 @@ class SignUpViewController: UIViewController {
                 return
             }
 
-            user?.sendEmailVerification() { (error) in
+            user?.sendEmailVerification() { [unowned self] (error) in
                 if let e = error {
                     print(e.localizedDescription)
                     return
