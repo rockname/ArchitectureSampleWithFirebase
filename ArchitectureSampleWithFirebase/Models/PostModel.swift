@@ -14,7 +14,7 @@ class PostModel {
     
     let db: Firestore
     
-    var delegate: PostModelDelegate?
+    weak var delegate: PostModelDelegate?
 
     init() {
         self.db = Firestore.firestore()

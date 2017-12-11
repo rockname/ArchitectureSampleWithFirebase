@@ -7,7 +7,7 @@ import Firebase
 }
 
 class AuthModel {
-    var delegate: AuthModelDelegate?
+    weak var delegate: AuthModelDelegate?
     
     func signUp(with email: String, and password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { [unowned self] (user, error) in
