@@ -1,46 +1,54 @@
 import Firebase
+import RxSwift
 
-@objc protocol AuthRepositoryDelegate: class {
-    @objc optional func didSignUp(newUser: User)
-    @objc optional func didLogIn(isEmailVerified: Bool)
-    @objc optional func emailVerificationDidSend()
-}
-
-class FireBaseAuthRepository {
-    var delegate: AuthModelDelegate?
+class FireBaseAuthRepository: AuthRepository {
     
-    func signUp(with email: String, and password: String) {
+    private var signUpSubject: PublishSubject<User>!
+    private var emailVerificationSubject: PublishSubject<Void>!
+    private var loginSubject: PublishSubject<User>!
+    
+    func signUp(with email: String, and password: String) -> Observable<User> {
+        signUpSubject = PublishSubject<User>()
         Auth.auth().createUser(withEmail: email, password: password) { [unowned self] (user, error) in
             if let e = error {
                 print(e.localizedDescription)
+                self.signUpSubject.onError(e)
                 return
             }
             guard let user = user else { return }
-            self.delegate?.didSignUp?(newUser: user)
+            self.signUpSubject.onNext(User(email: user.email, isEmailVerified: user.isEmailVerified))
         }
+        return signUpSubject
     }
-    func sendEmailVerification(to user: User) {
+    
+    func sendEmailVerification() -> Observable<Void> {
+        emailVerificationSubject = PublishSubject<Void>()
+        guard let user = Auth.auth().currentUser else {
+            emailVerificationSubject.onError()
+            return emailVerificationSubject
+        }
         user.sendEmailVerification() { [unowned self] error in
             if let e = error {
                 print(e.localizedDescription)
+                self.emailVerificationSubject.onError(e)
                 return
             }
-            self.delegate?.emailVerificationDidSend?()
+            self.emailVerificationSubject.onNext(())
         }
+        return emailVerificationSubject
     }
-    func login(with email: String, and password: String) {
+    
+    func login(with email: String, and password: String) -> Observable<User> {
+        loginSubject = PublishSubject<User>()
         Auth.auth().signIn(withEmail: email, password: password) { [unowned self] (user, error) in
             if let e = error {
                 print(e.localizedDescription)
+                self.loginSubject.onError(e)
                 return
             }
             guard let loginUser = user else { return }
-            self.delegate?.didLogIn?(isEmailVerified: loginUser.isEmailVerified)
+            self.loginSubject.onNext(User(email: loginUser.email, isEmailVerified: loginUser.isEmailVerified))
         }
-    }
-    
-    func isUserVerified() -> Bool {
-        guard let user = Auth.auth().currentUser else { return false }
-        return user.isEmailVerified
+        return loginSubject
     }
 }
