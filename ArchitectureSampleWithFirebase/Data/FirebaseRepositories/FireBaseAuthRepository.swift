@@ -3,52 +3,54 @@ import RxSwift
 
 class FireBaseAuthRepository: AuthRepository {
     
-    private var signUpSubject: PublishSubject<User>!
-    private var emailVerificationSubject: PublishSubject<Void>!
-    private var loginSubject: PublishSubject<User>!
-    
     func signUp(with email: String, and password: String) -> Observable<User> {
-        signUpSubject = PublishSubject<User>()
-        Auth.auth().createUser(withEmail: email, password: password) { [unowned self] (user, error) in
-            if let e = error {
-                print(e.localizedDescription)
-                self.signUpSubject.onError(e)
-                return
+        return Observable.create { observer in
+            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+                if let e = error {
+                    print(e.localizedDescription)
+                    observer.onError(e)
+                    return
+                }
+                guard let user = user else { return }
+                observer.onNext(User(email: user.email, isEmailVerified: user.isEmailVerified))
             }
-            guard let user = user else { return }
-            self.signUpSubject.onNext(User(email: user.email, isEmailVerified: user.isEmailVerified))
+            return Disposables.create()
         }
-        return signUpSubject
     }
     
     func sendEmailVerification() -> Observable<Void> {
-        emailVerificationSubject = PublishSubject<Void>()
-        guard let user = Auth.auth().currentUser else {
-            emailVerificationSubject.onError()
-            return emailVerificationSubject
-        }
-        user.sendEmailVerification() { [unowned self] error in
-            if let e = error {
-                print(e.localizedDescription)
-                self.emailVerificationSubject.onError(e)
-                return
+        return Observable.create { observer in
+            guard let user = Auth.auth().currentUser else {
+                observer.onError(Exception.auth)
+                return Disposables.create()
             }
-            self.emailVerificationSubject.onNext(())
+            user.sendEmailVerification() { error in
+                if let e = error {
+                    print(e.localizedDescription)
+                    observer.onError(e)
+                    return
+                }
+                observer.onNext(())
+            }
+            return Disposables.create()
         }
-        return emailVerificationSubject
     }
     
     func login(with email: String, and password: String) -> Observable<User> {
-        loginSubject = PublishSubject<User>()
-        Auth.auth().signIn(withEmail: email, password: password) { [unowned self] (user, error) in
-            if let e = error {
-                print(e.localizedDescription)
-                self.loginSubject.onError(e)
-                return
+        return Observable.create { observer in
+            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+                if let e = error {
+                    print(e.localizedDescription)
+                    observer.onError(e)
+                    return
+                }
+                guard let loginUser = user else {
+                    observer.onError(Exception.auth)
+                    return
+                }
+                observer.onNext(User(email: loginUser.email, isEmailVerified: loginUser.isEmailVerified))
             }
-            guard let loginUser = user else { return }
-            self.loginSubject.onNext(User(email: loginUser.email, isEmailVerified: loginUser.isEmailVerified))
+            return Disposables.create()
         }
-        return loginSubject
     }
 }
