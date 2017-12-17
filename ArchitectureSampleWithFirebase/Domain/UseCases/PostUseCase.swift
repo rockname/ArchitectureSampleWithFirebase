@@ -8,12 +8,12 @@ class PostUseCase {
         self.postRepository = postRepository
     }
     
-    func post(_ content: String) -> Observable<Post> {
+    func post(_ content: String) -> Observable<Void> {
         return postRepository
             .create(with: content)
     }
     
-    func update(post: Post) -> Observable<Post> {
+    func update(post: Post) -> Observable<Void> {
         return postRepository
             .update(post)
     }

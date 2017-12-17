@@ -11,6 +11,10 @@ class SignUpUseCase {
         self.authRepository = authRepository
     }
     
+    func checkLogIn() -> Observable<Bool> {
+        return authRepository.checkLogin()
+    }
+    
     func signUp(with email: String, and password: String) -> Observable<User> {
         return authRepository
             .signUp(with: email, and: password)
