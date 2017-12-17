@@ -1,34 +1,22 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
-protocol LoginViewInterface: class {
-    var email: String? { get }
-    var password: String? { get }
-    func toList()
-    func presentValidateAlert()
-}
-
-class LoginViewController: UIViewController, LoginViewInterface {
+class LoginViewController: UIViewController {
     
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
-    var presenter: LoginPresenter!
+    var loginUseCase: LoginUseCase!
     
-    var email: String? {
-        return emailTextField.text
-    }
-    var password: String? {
-        return passwordTextField.text
-    }
+    let dispodeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
-        initializePresenter()
-    }
-    
-    @IBAction func loginButtonTapped() {
-        presenter.loginButtonTapped()
+        initializeUseCase()
+        bind()
     }
     
     func initializeUI() {
@@ -37,8 +25,25 @@ class LoginViewController: UIViewController, LoginViewInterface {
         passwordTextField.isSecureTextEntry  = true
     }
     
-    func initializePresenter() {
-        presenter = LoginPresenter(with: self)
+    func initializeUseCase() {
+        loginUseCase = LoginUseCase(with: FireBaseAuthRepository())
+    }
+    
+    func bind() {
+        loginButton.rx.tap.asDriver().drive(onNext: { [unowned self] _ in
+            guard let email = self.emailTextField.text,
+                let password = self.passwordTextField.text else { return }
+            
+            self.loginUseCase.login(with: email, and: password)
+                .subscribe(onNext: { [unowned self] user in
+                    if user.isEmailVerified {
+                        self.toList()
+                    } else {
+                        self.presentValidateAlert()
+                    }
+                })
+                .disposed(by: self.dispodeBag)
+        }).disposed(by: dispodeBag)
     }
     
     func presentValidateAlert() {

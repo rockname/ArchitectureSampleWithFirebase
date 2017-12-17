@@ -1,41 +1,57 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
-protocol PostViewInterface: class {
-    func toList()
-}
-
-class PostViewController: UIViewController, PostViewInterface {
+class PostViewController: UIViewController {
     
     @IBOutlet var textField: UITextField!
+    @IBOutlet weak var postButton: UIButton!
     
-    var presenter: PostPresenter!
+    var postUseCase: PostUseCase!
+    var selectedPost: Post?
+
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
-        initializePresenter()
+        initializeUseCase()
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let post = presenter.selectedPost {
+        if let post = selectedPost {
             textField.text = post.content
         }
-    }
-    
-    @IBAction func postButtonTapped(sender: UIButton) {
-        guard let content = textField.text else { return }
-
-        presenter.post(content)
     }
     
     func initializeUI() {
         textField.delegate = self
     }
     
-    func initializePresenter() {
-        if presenter == nil { presenter = PostPresenter(with: self) }
+    func initializeUseCase() {
+        postUseCase = PostUseCase(with: FireBasePostRepository())
+    }
+    
+    func bind() {
+        postButton.rx.tap.asDriver().drive(onNext: { [unowned self] _ in
+            guard let content = self.textField.text else { return }
+            if let post = self.selectedPost {
+                self.postUseCase.update(post: Post(id: post.id, user: post.user, content: content, date: Date()))
+                    .subscribe(onNext: { [unowned self] _ in
+                        self.toList()
+                    })
+                    .disposed(by: self.disposeBag)
+            } else {
+                self.postUseCase.post(content)
+                    .subscribe(onNext: { [unowned self] _ in
+                        self.toList()
+                    })
+                    .disposed(by: self.disposeBag)
+            }
+        }).disposed(by: disposeBag)
     }
     
     func toList() {

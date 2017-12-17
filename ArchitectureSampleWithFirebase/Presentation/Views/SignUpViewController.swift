@@ -1,43 +1,27 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
-protocol SignUpViewInterface: class {
-    var email: String? { get }
-    var password: String? { get }
-    func toList()
-    func toLogin()
-}
-
-class SignUpViewController: UIViewController, SignUpViewInterface {
+class SignUpViewController: UIViewController {
     
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
     
-    var presenter: SignUpPresenter!
+    var signUpUseCase: SignUpUseCase!
     
-    var email: String? {
-        return self.emailTextField.text
-    }
-    var password: String? {
-        return self.passwordTextField.text
-    }
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
-        initializePresenter()
+        initializeUseCase()
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        presenter.viewWillAppear()
-    }
-    
-    @IBAction func signUpButtonTapped() {
-        presenter.signUpButtonTapped()
-    }
-    @IBAction func loginButtonTapped() {
-        presenter.loginButtonTapped()
     }
     
     func initializeUI() {
@@ -46,8 +30,27 @@ class SignUpViewController: UIViewController, SignUpViewInterface {
         passwordTextField.isSecureTextEntry = true
     }
 
-    func initializePresenter() {
-        presenter = SignUpPresenter(with: self)
+    func initializeUseCase() {
+        signUpUseCase = SignUpUseCase(with: FireBaseAuthRepository())
+    }
+    
+    func bind() {
+        rx.sentMessage(#selector(viewWillAppear(_:)))
+            .withLatestFrom(signUpUseCase.checkLogIn()) { [unowned self] (_, isLogin) in
+                if isLogin {
+                    self.toList()
+                }
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
+        signUpButton.rx.tap.asDriver()
+            .drive(onNext: { [unowned self] _ in
+                guard let email = self.emailTextField.text,
+                    let password = self.passwordTextField.text else { return }
+                self.signUpUseCase.signUp(with: email, and: password)
+                    .subscribe(onNext: { [unowned self] _ in self.toLogin() })
+                    .disposed(by: self.disposeBag)
+            }).disposed(by: disposeBag)
     }
     
     func toLogin() {

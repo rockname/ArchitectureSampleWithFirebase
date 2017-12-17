@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C3D43731FDACF40008C5F01 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43671FDACF38008C5F01 /* ListPresenter.swift */; };
-		4C3D43741FDACF40008C5F01 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43681FDACF38008C5F01 /* LoginPresenter.swift */; };
-		4C3D43751FDACF40008C5F01 /* PostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43691FDACF38008C5F01 /* PostPresenter.swift */; };
-		4C3D43761FDACF40008C5F01 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D436A1FDACF38008C5F01 /* SignUpPresenter.swift */; };
 		4C3D43771FDACF49008C5F01 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D436D1FDACF38008C5F01 /* ListTableViewCell.swift */; };
 		4C3D43781FDACF49008C5F01 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C3D436E1FDACF38008C5F01 /* ListTableViewCell.xib */; };
 		4C3D43791FDACF49008C5F01 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D436F1FDACF38008C5F01 /* ListViewController.swift */; };
@@ -42,10 +38,6 @@
 		4C3D435E1FDACF29008C5F01 /* FireBaseAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseAuthRepository.swift; sourceTree = "<group>"; };
 		4C3D435F1FDACF29008C5F01 /* FireBasePostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBasePostRepository.swift; sourceTree = "<group>"; };
 		4C3D43641FDACF30008C5F01 /* ListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUseCase.swift; sourceTree = "<group>"; };
-		4C3D43671FDACF38008C5F01 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
-		4C3D43681FDACF38008C5F01 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		4C3D43691FDACF38008C5F01 /* PostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPresenter.swift; sourceTree = "<group>"; };
-		4C3D436A1FDACF38008C5F01 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		4C3D436D1FDACF38008C5F01 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		4C3D436E1FDACF38008C5F01 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		4C3D436F1FDACF38008C5F01 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -161,21 +153,9 @@
 		4C3D43651FDACF38008C5F01 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				4C3D43661FDACF38008C5F01 /* Presenters */,
 				4C3D436B1FDACF38008C5F01 /* Views */,
 			);
 			path = Presentation;
-			sourceTree = "<group>";
-		};
-		4C3D43661FDACF38008C5F01 /* Presenters */ = {
-			isa = PBXGroup;
-			children = (
-				4C3D43671FDACF38008C5F01 /* ListPresenter.swift */,
-				4C3D43681FDACF38008C5F01 /* LoginPresenter.swift */,
-				4C3D43691FDACF38008C5F01 /* PostPresenter.swift */,
-				4C3D436A1FDACF38008C5F01 /* SignUpPresenter.swift */,
-			);
-			path = Presenters;
 			sourceTree = "<group>";
 		};
 		4C3D436B1FDACF38008C5F01 /* Views */ = {
@@ -407,18 +387,14 @@
 				4C3D43891FDAD014008C5F01 /* PostUseCase.swift in Sources */,
 				4C3D437A1FDACF49008C5F01 /* LoginViewController.swift in Sources */,
 				4C3D43771FDACF49008C5F01 /* ListTableViewCell.swift in Sources */,
-				4C3D43761FDACF40008C5F01 /* SignUpPresenter.swift in Sources */,
 				4C3D437E1FDACF5E008C5F01 /* FireBasePostRepository.swift in Sources */,
-				4C3D43751FDACF40008C5F01 /* PostPresenter.swift in Sources */,
 				4C7234F71FE699D100677DCC /* Exception.swift in Sources */,
 				4C3D437D1FDACF5B008C5F01 /* FireBaseAuthRepository.swift in Sources */,
 				4C3D437B1FDACF49008C5F01 /* PostViewController.swift in Sources */,
-				4C3D43741FDACF40008C5F01 /* LoginPresenter.swift in Sources */,
 				4C3D43811FDACF9C008C5F01 /* Post.swift in Sources */,
 				4C4F5E5C1FD3F1DB00AC40F3 /* R.generated.swift in Sources */,
 				4C3D43831FDACFDD008C5F01 /* AuthRepository.swift in Sources */,
 				4C3D438B1FDAD020008C5F01 /* SignUpUseCase.swift in Sources */,
-				4C3D43731FDACF40008C5F01 /* ListPresenter.swift in Sources */,
 				4C3D437F1FDACF60008C5F01 /* ListUseCase.swift in Sources */,
 				4C3D43851FDACFF0008C5F01 /* PostRepository.swift in Sources */,
 				4C3D43791FDACF49008C5F01 /* ListViewController.swift in Sources */,

@@ -32,16 +32,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="da9-1U-AND">
                                 <rect key="frame" x="168" y="314" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
-                                <connections>
-                                    <action selector="loginButtonTapped" destination="biN-Ex-Dhc" eventType="touchUpInside" id="xOF-nw-lpe"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7L4-QV-Ppp">
                                 <rect key="frame" x="161" y="254" width="52" height="30"/>
                                 <state key="normal" title="Sign up"/>
-                                <connections>
-                                    <action selector="signUpButtonTapped" destination="biN-Ex-Dhc" eventType="touchUpInside" id="oFK-u7-FlN"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,7 +58,9 @@
                     <navigationItem key="navigationItem" title="Signup" id="TXl-4I-g5D"/>
                     <connections>
                         <outlet property="emailTextField" destination="Sey-D3-ncA" id="Ylp-1N-aaN"/>
+                        <outlet property="loginButton" destination="da9-1U-AND" id="ZSa-32-ZlF"/>
                         <outlet property="passwordTextField" destination="06p-ll-ABj" id="0DK-as-FF9"/>
+                        <outlet property="signUpButton" destination="7L4-QV-Ppp" id="w2s-Vo-Qer"/>
                         <segue destination="WgQ-Ut-bt6" kind="show" identifier="toLogin" id="LQg-j1-96f"/>
                         <segue destination="c5f-3z-sNd" kind="modal" identifier="toList" id="F3S-ds-KsW"/>
                     </connections>
@@ -93,9 +89,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="＋"/>
-                                <connections>
-                                    <action selector="addButtonTapped" destination="c5f-3z-sNd" eventType="touchUpInside" id="pNc-aT-O3Y"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -142,9 +135,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPE-oN-idK">
                                 <rect key="frame" x="168" y="264" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
-                                <connections>
-                                    <action selector="loginButtonTapped" destination="WgQ-Ut-bt6" eventType="touchUpInside" id="bg8-Pd-6v4"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -165,6 +155,7 @@
                     <navigationItem key="navigationItem" title="Login" id="3sV-9K-i1J"/>
                     <connections>
                         <outlet property="emailTextField" destination="BDN-XE-CE2" id="V0Y-rh-orM"/>
+                        <outlet property="loginButton" destination="qPE-oN-idK" id="3LK-xv-9fg"/>
                         <outlet property="passwordTextField" destination="YKx-Cr-WXw" id="7YM-PC-twZ"/>
                         <segue destination="c5f-3z-sNd" kind="modal" identifier="toList" id="i1p-0f-1rx"/>
                     </connections>
@@ -196,9 +187,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6io-Ar-Wqb">
                                 <rect key="frame" x="171.5" y="151" width="31" height="30"/>
                                 <state key="normal" title="Post"/>
-                                <connections>
-                                    <action selector="postButtonTappedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TgR-CA-cXm"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -215,6 +203,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="postButton" destination="6io-Ar-Wqb" id="D8i-uP-OWf"/>
                         <outlet property="textField" destination="k93-5B-XOl" id="p0K-53-iar"/>
                     </connections>
                 </viewController>
@@ -242,6 +231,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="i1p-0f-1rx"/>
+        <segue reference="F3S-ds-KsW"/>
     </inferredMetricsTieBreakers>
 </document>
