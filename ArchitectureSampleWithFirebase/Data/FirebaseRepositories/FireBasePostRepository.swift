@@ -35,6 +35,7 @@ class FireBasePostRepository: PostRepository {
         
         return Observable.create { [unowned self] observer in
             self.listener = self.db.collection("posts")
+                .order(by: "date")
                 .addSnapshotListener(options: options) { snapshot, error in
                     guard let snap = snapshot else {
                         print("Error fetching document: \(error!)")

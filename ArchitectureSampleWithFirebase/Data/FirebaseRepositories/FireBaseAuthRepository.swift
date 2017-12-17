@@ -3,6 +3,17 @@ import RxSwift
 
 class FireBaseAuthRepository: AuthRepository {
     
+    func checkLogin() -> Observable<Bool> {
+        return Observable.create { observer in
+            if Auth.auth().currentUser != nil {
+                observer.onNext(true)
+            } else {
+                observer.onNext(false)
+            }
+            return Disposables.create()
+        }
+    }
+    
     func signUp(with email: String, and password: String) -> Observable<User> {
         return Observable.create { observer in
             Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
