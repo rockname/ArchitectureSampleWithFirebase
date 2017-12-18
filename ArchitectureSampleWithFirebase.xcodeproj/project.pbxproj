@@ -26,6 +26,15 @@
 		4C4583611FC957FB002AFB69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C45835F1FC957FB002AFB69 /* Main.storyboard */; };
 		4C4583631FC957FB002AFB69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C4583621FC957FB002AFB69 /* Assets.xcassets */; };
 		4C4583661FC957FB002AFB69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4583641FC957FB002AFB69 /* LaunchScreen.storyboard */; };
+		4C4924871FE75B3F0073FE0B /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4924861FE75B3F0073FE0B /* ListViewModel.swift */; };
+		4C4924891FE75B530073FE0B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4924881FE75B530073FE0B /* LoginViewModel.swift */; };
+		4C49248B1FE75B650073FE0B /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49248A1FE75B650073FE0B /* SignUpViewModel.swift */; };
+		4C49248D1FE75B770073FE0B /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49248C1FE75B770073FE0B /* PostViewModel.swift */; };
+		4C4924901FE75BDF0073FE0B /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49248F1FE75BDF0073FE0B /* ViewModelType.swift */; };
+		4C4924921FE764380073FE0B /* ListNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4924911FE764380073FE0B /* ListNavigator.swift */; };
+		4C4924951FE768F10073FE0B /* SignUpNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4924941FE768F10073FE0B /* SignUpNavigator.swift */; };
+		4C4924971FE769080073FE0B /* LoginNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4924961FE769080073FE0B /* LoginNavigator.swift */; };
+		4C4924991FE769370073FE0B /* PostNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4924981FE769370073FE0B /* PostNavigator.swift */; };
 		4C4F5E5A1FD3F1B900AC40F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */; };
 		4C4F5E5C1FD3F1DB00AC40F3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */; };
 		4C7234F71FE699D100677DCC /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234F61FE699D100677DCC /* Exception.swift */; };
@@ -56,6 +65,15 @@
 		4C4583621FC957FB002AFB69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C4583651FC957FB002AFB69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C4583671FC957FB002AFB69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C4924861FE75B3F0073FE0B /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		4C4924881FE75B530073FE0B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		4C49248A1FE75B650073FE0B /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		4C49248C1FE75B770073FE0B /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		4C49248F1FE75BDF0073FE0B /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		4C4924911FE764380073FE0B /* ListNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNavigator.swift; sourceTree = "<group>"; };
+		4C4924941FE768F10073FE0B /* SignUpNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNavigator.swift; sourceTree = "<group>"; };
+		4C4924961FE769080073FE0B /* LoginNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigator.swift; sourceTree = "<group>"; };
+		4C4924981FE769370073FE0B /* PostNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNavigator.swift; sourceTree = "<group>"; };
 		4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		4C7234F61FE699D100677DCC /* Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exception.swift; sourceTree = "<group>"; };
@@ -93,12 +111,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4C3D435C1FDACF29008C5F01 /* Data */ = {
+		4C25B0461FE7823200C9A939 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				4C3D435D1FDACF29008C5F01 /* FirebaseRepositories */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		4C25B0471FE7824800C9A939 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				4C4924931FE764430073FE0B /* Navigators */,
+				4C3D436B1FDACF38008C5F01 /* Views */,
+				4C49248E1FE75B7F0073FE0B /* ViewModels */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		4C3D435D1FDACF29008C5F01 /* FirebaseRepositories */ = {
@@ -113,8 +141,8 @@
 		4C3D43601FDACF30008C5F01 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				4C3D43611FDACF30008C5F01 /* Entities */,
 				4C3D43621FDACF30008C5F01 /* Repositories */,
+				4C3D43611FDACF30008C5F01 /* Entities */,
 				4C3D43631FDACF30008C5F01 /* UseCases */,
 			);
 			path = Domain;
@@ -148,14 +176,6 @@
 				4C3D438A1FDAD020008C5F01 /* SignUpUseCase.swift */,
 			);
 			path = UseCases;
-			sourceTree = "<group>";
-		};
-		4C3D43651FDACF38008C5F01 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				4C3D436B1FDACF38008C5F01 /* Views */,
-			);
-			path = Presentation;
 			sourceTree = "<group>";
 		};
 		4C3D436B1FDACF38008C5F01 /* Views */ = {
@@ -200,9 +220,9 @@
 		4C45835A1FC957FB002AFB69 /* ArchitectureSampleWithFirebase */ = {
 			isa = PBXGroup;
 			children = (
-				4C3D43651FDACF38008C5F01 /* Presentation */,
+				4C25B0471FE7824800C9A939 /* Presentation */,
 				4C3D43601FDACF30008C5F01 /* Domain */,
-				4C3D435C1FDACF29008C5F01 /* Data */,
+				4C25B0461FE7823200C9A939 /* Data */,
 				4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */,
 				4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */,
 				4C4583671FC957FB002AFB69 /* Info.plist */,
@@ -212,6 +232,29 @@
 				4C45835B1FC957FB002AFB69 /* AppDelegate.swift */,
 			);
 			path = ArchitectureSampleWithFirebase;
+			sourceTree = "<group>";
+		};
+		4C49248E1FE75B7F0073FE0B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4C4924861FE75B3F0073FE0B /* ListViewModel.swift */,
+				4C4924881FE75B530073FE0B /* LoginViewModel.swift */,
+				4C49248A1FE75B650073FE0B /* SignUpViewModel.swift */,
+				4C49248C1FE75B770073FE0B /* PostViewModel.swift */,
+				4C49248F1FE75BDF0073FE0B /* ViewModelType.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4C4924931FE764430073FE0B /* Navigators */ = {
+			isa = PBXGroup;
+			children = (
+				4C4924911FE764380073FE0B /* ListNavigator.swift */,
+				4C4924941FE768F10073FE0B /* SignUpNavigator.swift */,
+				4C4924961FE769080073FE0B /* LoginNavigator.swift */,
+				4C4924981FE769370073FE0B /* PostNavigator.swift */,
+			);
+			path = Navigators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,16 +431,25 @@
 				4C3D437A1FDACF49008C5F01 /* LoginViewController.swift in Sources */,
 				4C3D43771FDACF49008C5F01 /* ListTableViewCell.swift in Sources */,
 				4C3D437E1FDACF5E008C5F01 /* FireBasePostRepository.swift in Sources */,
+				4C4924971FE769080073FE0B /* LoginNavigator.swift in Sources */,
+				4C4924921FE764380073FE0B /* ListNavigator.swift in Sources */,
+				4C4924951FE768F10073FE0B /* SignUpNavigator.swift in Sources */,
 				4C7234F71FE699D100677DCC /* Exception.swift in Sources */,
 				4C3D437D1FDACF5B008C5F01 /* FireBaseAuthRepository.swift in Sources */,
 				4C3D437B1FDACF49008C5F01 /* PostViewController.swift in Sources */,
+				4C4924891FE75B530073FE0B /* LoginViewModel.swift in Sources */,
 				4C3D43811FDACF9C008C5F01 /* Post.swift in Sources */,
 				4C4F5E5C1FD3F1DB00AC40F3 /* R.generated.swift in Sources */,
+				4C4924901FE75BDF0073FE0B /* ViewModelType.swift in Sources */,
 				4C3D43831FDACFDD008C5F01 /* AuthRepository.swift in Sources */,
 				4C3D438B1FDAD020008C5F01 /* SignUpUseCase.swift in Sources */,
+				4C49248B1FE75B650073FE0B /* SignUpViewModel.swift in Sources */,
+				4C4924991FE769370073FE0B /* PostNavigator.swift in Sources */,
 				4C3D437F1FDACF60008C5F01 /* ListUseCase.swift in Sources */,
 				4C3D43851FDACFF0008C5F01 /* PostRepository.swift in Sources */,
+				4C4924871FE75B3F0073FE0B /* ListViewModel.swift in Sources */,
 				4C3D43791FDACF49008C5F01 /* ListViewController.swift in Sources */,
+				4C49248D1FE75B770073FE0B /* PostViewModel.swift in Sources */,
 				4C45835C1FC957FB002AFB69 /* AppDelegate.swift in Sources */,
 				4C3D43871FDAD008008C5F01 /* LoginUseCase.swift in Sources */,
 				4CBB96F11FE1153F002C5DCC /* User.swift in Sources */,
