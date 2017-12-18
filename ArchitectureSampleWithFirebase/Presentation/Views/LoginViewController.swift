@@ -8,15 +8,15 @@ class LoginViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-    var loginUseCase: LoginUseCase!
+    var loginViewModel: LoginViewModel!
     
-    let dispodeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
-        initializeUseCase()
-        bind()
+        initializeViewModel()
+        bindViewModel()
     }
     
     func initializeUI() {
@@ -25,35 +25,31 @@ class LoginViewController: UIViewController {
         passwordTextField.isSecureTextEntry  = true
     }
     
-    func initializeUseCase() {
-        loginUseCase = LoginUseCase(with: FireBaseAuthRepository())
+    func initializeViewModel() {
+        loginViewModel = LoginViewModel(with: LoginUseCase(with: FireBaseAuthRepository()),
+                                        and: LoginNavigator(with: self))
     }
     
-    func bind() {
-        loginButton.rx.tap.asDriver().drive(onNext: { [unowned self] _ in
-            guard let email = self.emailTextField.text,
-                let password = self.passwordTextField.text else { return }
-            
-            self.loginUseCase.login(with: email, and: password)
-                .subscribe(onNext: { [unowned self] user in
-                    if user.isEmailVerified {
-                        self.toList()
-                    } else {
-                        self.presentValidateAlert()
-                    }
-                })
-                .disposed(by: self.dispodeBag)
-        }).disposed(by: dispodeBag)
+    func bindViewModel() {
+        let input = LoginViewModel.Input(loginTrigger: loginButton.rx.tap.asDriver(),
+                                          email: emailTextField.rx.text
+                                            .map { if let t = $0 { return t } else { return "" } }
+                                            .asDriver(onErrorJustReturn: ""),
+                                          password: passwordTextField.rx.text
+                                            .map { if let t = $0 { return t } else { return "" } }
+                                            .asDriver(onErrorJustReturn: "").asDriver())
+        let output = loginViewModel.transform(input: input)
+        output.login.drive(onNext: userWillLogin).disposed(by: disposeBag)
     }
-    
+    func userWillLogin(user: User) {
+        if !user.isEmailVerified {
+            presentValidateAlert()
+        }
+    }
     func presentValidateAlert() {
         let alert = UIAlertController(title: "メール認証", message: "メール認証を行ってください", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func toList()  {
-        self.performSegue(withIdentifier: R.segue.loginViewController.toList, sender: self)
     }
 }
 

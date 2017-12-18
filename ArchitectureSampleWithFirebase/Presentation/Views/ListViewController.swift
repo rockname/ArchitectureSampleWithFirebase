@@ -7,30 +7,26 @@ class ListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
     
-    var listUseCase: ListUseCase!
+    var listViewModel: ListViewModel!
     let disposeBag = DisposeBag()
-    
-    var selectedPost: Post?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeTableView()
         initializeUI()
-        initializeUseCase()
-        listUseCase.loadPosts()
-        bind()
+        initializeViewModel()
+        bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        selectedPost = nil
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == R.segue.listViewController.toPost.identifier {
             if let vc = segue.destination as? PostViewController,
-                let post = selectedPost {
-                vc.selectedPost = post
+                let post = sender as? Post {
+                vc.initializeViewModel(with: post)
             }
         }
     }
@@ -48,34 +44,29 @@ class ListViewController: UIViewController {
         addButton.tintColor = UIColor.white
     }
     
-    func initializeUseCase() {
-        listUseCase = ListUseCase(with: FireBasePostRepository())
+    func initializeViewModel() {
+        listViewModel = ListViewModel(
+            with: ListUseCase(with: FireBasePostRepository()),
+            and: ListNavigator(with: self)
+        )
     }
     
-    func bind() {
-        addButton.rx.tap.asDriver().drive(onNext: toPost).disposed(by: disposeBag)
-        listUseCase.contentArray
-            .bind(to: tableView.rx.items(cellIdentifier: R.reuseIdentifier.listTableViewCell.identifier, cellType: ListTableViewCell.self)) { (row, element, cell) in
+    func bindViewModel() {
+        
+        let input = ListViewModel.Input(trigger: Driver.just(()),
+                                        postTrigger: addButton.rx.tap.asDriver(),
+                                        selectTrigger: tableView.rx.itemSelected.asDriver().map { $0.row },
+                                        deleteTrigger: tableView.rx.itemDeleted.asDriver().map { $0.row })
+        let output = listViewModel.transform(input: input)
+        
+        output.posts
+            .drive(tableView.rx.items(cellIdentifier: R.reuseIdentifier.listTableViewCell.identifier, cellType: ListTableViewCell.self)) { (row, element, cell) in
                 cell.setCellData(date: element.date, content: element.content)
             }
             .disposed(by: disposeBag)
-        tableView.rx.itemSelected.asDriver()
-            .withLatestFrom(listUseCase.contentArray.asDriver(onErrorJustReturn: [])) { [unowned self] (indexPath: IndexPath, posts: [Post]) in
-                self.selectedPost = posts[indexPath.row]
-                self.toPost()
-            }
-            .drive()
-            .disposed(by: disposeBag)
-        tableView.rx.itemDeleted.asDriver()
-            .drive(onNext: { [unowned self] indexPath in
-                self.listUseCase.delete(at: indexPath.row)
-                    .subscribe()
-                    .disposed(by: self.disposeBag)
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    func toPost() {
-        self.performSegue(withIdentifier: R.segue.listViewController.toPost, sender: self)
+        output.load.drive().disposed(by: disposeBag)
+        output.select.drive().disposed(by: disposeBag)
+        output.delete.drive().disposed(by: disposeBag)
+        output.toPost.drive().disposed(by: disposeBag)
     }
 }

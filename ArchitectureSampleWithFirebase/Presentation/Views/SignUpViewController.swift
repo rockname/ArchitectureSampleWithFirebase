@@ -9,15 +9,15 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
-    var signUpUseCase: SignUpUseCase!
+    var signUpViewModel: SignUpViewModel!
     
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
-        initializeUseCase()
-        bind()
+        initializeViewModel()
+        bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,27 +30,27 @@ class SignUpViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
     }
 
-    func initializeUseCase() {
-        signUpUseCase = SignUpUseCase(with: FireBaseAuthRepository())
+    func initializeViewModel() {
+        signUpViewModel = SignUpViewModel.init(with: SignUpUseCase(with: FireBaseAuthRepository()),
+                                               and: SignUpNavigator(with: self))
     }
     
-    func bind() {
-        rx.sentMessage(#selector(viewWillAppear(_:)))
-            .withLatestFrom(signUpUseCase.checkLogIn()) { [unowned self] (_, isLogin) in
-                if isLogin {
-                    self.toList()
-                }
-            }
-            .subscribe()
-            .disposed(by: disposeBag)
-        signUpButton.rx.tap.asDriver()
-            .drive(onNext: { [unowned self] _ in
-                guard let email = self.emailTextField.text,
-                    let password = self.passwordTextField.text else { return }
-                self.signUpUseCase.signUp(with: email, and: password)
-                    .subscribe(onNext: { [unowned self] _ in self.toLogin() })
-                    .disposed(by: self.disposeBag)
-            }).disposed(by: disposeBag)
+    func bindViewModel() {
+        let input = SignUpViewModel.Input(checkLoginTrigger: rx.sentMessage(#selector(viewWillAppear(_:)))
+            .map { _ in () }
+            .asDriver(onErrorJustReturn: ()),
+                                          loginTrigger: loginButton.rx.tap.asDriver(),
+                                          signUpTrigger: signUpButton.rx.tap.asDriver(),
+                                          email: emailTextField.rx.text
+                                            .map { if let t = $0 { return t } else { return "" } }
+                                            .asDriver(onErrorJustReturn: ""),
+                                          password: passwordTextField.rx.text
+                                            .map { if let t = $0 { return t } else { return "" } }
+                                            .asDriver(onErrorJustReturn: "").asDriver())
+        let output = signUpViewModel.transform(input: input)
+        output.checkLogin.drive().disposed(by: disposeBag)
+        output.login.drive().disposed(by: disposeBag)
+        output.signUp.drive().disposed(by: disposeBag)
     }
     
     func toLogin() {
