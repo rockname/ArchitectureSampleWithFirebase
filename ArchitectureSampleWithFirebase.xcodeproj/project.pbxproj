@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C1CFA4A1FE959B300FBAA3F /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1CFA491FE959B300FBAA3F /* ErrorTracker.swift */; };
+		4C1CFA4D1FE959F100FBAA3F /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1CFA4C1FE959F100FBAA3F /* ActivityIndicator.swift */; };
+		4C1CFA4F1FE95A9E00FBAA3F /* ArrayTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1CFA4E1FE95A9E00FBAA3F /* ArrayTracker.swift */; };
+		4C1CFA511FE9607F00FBAA3F /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1CFA501FE9607F00FBAA3F /* Observable+Ext.swift */; };
 		4C3D43771FDACF49008C5F01 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D436D1FDACF38008C5F01 /* ListTableViewCell.swift */; };
 		4C3D43781FDACF49008C5F01 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C3D436E1FDACF38008C5F01 /* ListTableViewCell.xib */; };
 		4C3D43791FDACF49008C5F01 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D436F1FDACF38008C5F01 /* ListViewController.swift */; };
@@ -35,6 +39,10 @@
 
 /* Begin PBXFileReference section */
 		47F3BC4701245F536E3E013D /* Pods_ArchitectureSampleWithFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArchitectureSampleWithFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C1CFA491FE959B300FBAA3F /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
+		4C1CFA4C1FE959F100FBAA3F /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		4C1CFA4E1FE95A9E00FBAA3F /* ArrayTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayTracker.swift; sourceTree = "<group>"; };
+		4C1CFA501FE9607F00FBAA3F /* Observable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Ext.swift"; sourceTree = "<group>"; };
 		4C3D435E1FDACF29008C5F01 /* FireBaseAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseAuthRepository.swift; sourceTree = "<group>"; };
 		4C3D435F1FDACF29008C5F01 /* FireBasePostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBasePostRepository.swift; sourceTree = "<group>"; };
 		4C3D43641FDACF30008C5F01 /* ListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUseCase.swift; sourceTree = "<group>"; };
@@ -91,6 +99,17 @@
 				47F3BC4701245F536E3E013D /* Pods_ArchitectureSampleWithFirebase.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4C1CFA4B1FE959BD00FBAA3F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4C1CFA491FE959B300FBAA3F /* ErrorTracker.swift */,
+				4C1CFA4C1FE959F100FBAA3F /* ActivityIndicator.swift */,
+				4C1CFA4E1FE95A9E00FBAA3F /* ArrayTracker.swift */,
+				4C1CFA501FE9607F00FBAA3F /* Observable+Ext.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		4C3D435C1FDACF29008C5F01 /* Data */ = {
@@ -154,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				4C3D436B1FDACF38008C5F01 /* Views */,
+				4C1CFA4B1FE959BD00FBAA3F /* Utilities */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -391,13 +411,17 @@
 				4C7234F71FE699D100677DCC /* Exception.swift in Sources */,
 				4C3D437D1FDACF5B008C5F01 /* FireBaseAuthRepository.swift in Sources */,
 				4C3D437B1FDACF49008C5F01 /* PostViewController.swift in Sources */,
+				4C1CFA511FE9607F00FBAA3F /* Observable+Ext.swift in Sources */,
 				4C3D43811FDACF9C008C5F01 /* Post.swift in Sources */,
 				4C4F5E5C1FD3F1DB00AC40F3 /* R.generated.swift in Sources */,
 				4C3D43831FDACFDD008C5F01 /* AuthRepository.swift in Sources */,
 				4C3D438B1FDAD020008C5F01 /* SignUpUseCase.swift in Sources */,
 				4C3D437F1FDACF60008C5F01 /* ListUseCase.swift in Sources */,
 				4C3D43851FDACFF0008C5F01 /* PostRepository.swift in Sources */,
+				4C1CFA4A1FE959B300FBAA3F /* ErrorTracker.swift in Sources */,
+				4C1CFA4F1FE95A9E00FBAA3F /* ArrayTracker.swift in Sources */,
 				4C3D43791FDACF49008C5F01 /* ListViewController.swift in Sources */,
+				4C1CFA4D1FE959F100FBAA3F /* ActivityIndicator.swift in Sources */,
 				4C45835C1FC957FB002AFB69 /* AppDelegate.swift in Sources */,
 				4C3D43871FDAD008008C5F01 /* LoginUseCase.swift in Sources */,
 				4CBB96F11FE1153F002C5DCC /* User.swift in Sources */,

@@ -12,6 +12,8 @@ class PostViewController: UIViewController {
 
     let disposeBag = DisposeBag()
     
+    let error = ErrorTracker()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
@@ -40,13 +42,17 @@ class PostViewController: UIViewController {
             guard let content = self.textField.text else { return }
             if let post = self.selectedPost {
                 self.postUseCase.update(post: Post(id: post.id, user: post.user, content: content, date: Date()))
-                    .subscribe(onNext: { [unowned self] _ in
+                    .trackError(self.error)
+                    .asDriver(onErrorJustReturn: ())
+                    .drive(onNext: { [unowned self] _ in
                         self.toList()
                     })
                     .disposed(by: self.disposeBag)
             } else {
                 self.postUseCase.post(content)
-                    .subscribe(onNext: { [unowned self] _ in
+                    .trackError(self.error)
+                    .asDriver(onErrorJustReturn: ())
+                    .drive(onNext: { [unowned self] _ in
                         self.toList()
                     })
                     .disposed(by: self.disposeBag)

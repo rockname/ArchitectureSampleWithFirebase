@@ -11,7 +11,9 @@ class ListViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     var selectedPost: Post?
-    let contentArray = Variable<[Post]>([])
+    let contentArray = ArrayTracker<Post>()
+    let error = ErrorTracker()
+    let isLoading = ActivityIndicator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +57,11 @@ class ListViewController: UIViewController {
     func bind() {
         addButton.rx.tap.asDriver().drive(onNext: toPost).disposed(by: disposeBag)
         listUseCase.loadPosts()
-            .subscribe(onNext: postsDidLoad)
+            .trackError(error)
+            .trackActivity(isLoading)
+            .trackArray(contentArray)
+            .asDriver(onErrorJustReturn: [])
+            .drive()
             .disposed(by: disposeBag)
         contentArray.asDriver()
             .drive(tableView.rx.items(cellIdentifier: R.reuseIdentifier.listTableViewCell.identifier, cellType: ListTableViewCell.self)) { (row, element, cell) in
@@ -71,7 +77,7 @@ class ListViewController: UIViewController {
             .disposed(by: disposeBag)
         tableView.rx.itemDeleted.asDriver()
             .drive(onNext: { [unowned self] indexPath in
-                self.listUseCase.delete(with: self.contentArray.value[indexPath.row].id)
+                self.listUseCase.delete(with: self.contentArray.array[indexPath.row].id)
                     .subscribe()
                     .disposed(by: self.disposeBag)
             })
@@ -80,9 +86,5 @@ class ListViewController: UIViewController {
     
     func toPost() {
         self.performSegue(withIdentifier: R.segue.listViewController.toPost, sender: self)
-    }
-    
-    private func postsDidLoad(posts: [Post]) {
-        contentArray.value = posts
     }
 }

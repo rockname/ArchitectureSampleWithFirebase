@@ -12,6 +12,8 @@ class LoginViewController: UIViewController {
     
     let dispodeBag = DisposeBag()
     
+    let error = ErrorTracker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
@@ -35,6 +37,8 @@ class LoginViewController: UIViewController {
                 let password = self.passwordTextField.text else { return }
             
             self.loginUseCase.login(with: email, and: password)
+                .trackError(self.error)
+                .observeOn(MainScheduler.instance)
                 .subscribe(onNext: { [unowned self] user in
                     if user.isEmailVerified {
                         self.toList()

@@ -13,6 +13,8 @@ class SignUpViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
+    let error = ErrorTracker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeUI()
@@ -48,8 +50,11 @@ class SignUpViewController: UIViewController {
                 guard let email = self.emailTextField.text,
                     let password = self.passwordTextField.text else { return }
                 self.signUpUseCase.signUp(with: email, and: password)
+                    .trackError(self.error)
                     .flatMapLatest { [unowned self] user in
-                        return self.signUpUseCase.sendEmailVerification()
+                        return self.signUpUseCase
+                            .sendEmailVerification()
+                            .trackError(self.error)
                     }
                     .subscribe(onNext: { [unowned self] _ in self.toLogin() })
                     .disposed(by: self.disposeBag)
