@@ -31,7 +31,8 @@ Firebase(GoogleさんのmBaaS)でユーザーのSignUp/Login,投稿のCRUD処理
   - `R.generated.swift`が生成されるのでそれをプロジェクトへ追加
   
 - Firebaseの環境を整える
-  - Firebaseのプロジェクトを作成
+  
+  - Firebaseのプロジェクトを作成
   - `GoogleService-Info.plist`をダウンロード
   - plistをプロジェクトへ追加
   
