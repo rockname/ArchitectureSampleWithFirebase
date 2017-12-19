@@ -3,8 +3,6 @@ import RxSwift
 
 class SignUpUseCase {
     
-    private let disposeBag = DisposeBag()
-    
     private let authRepository: AuthRepository
     
     init(with authRepository: AuthRepository) {
@@ -16,19 +14,10 @@ class SignUpUseCase {
     }
     
     func signUp(with email: String, and password: String) -> Observable<User> {
-        return authRepository
-            .signUp(with: email, and: password)
-            .do(onNext: didSignUp)
+        return authRepository.signUp(with: email, and: password)
     }
     
-    private func didSignUp(_ user: User) {
-        authRepository
-            .sendEmailVerification()
-            .subscribe(onNext: emailVerificationDidSend)
-            .disposed(by: disposeBag)
-    }
-    
-    private func emailVerificationDidSend() {
-
+    func sendEmailVerification() -> Observable<Void> {
+        return authRepository.sendEmailVerification()
     }
 }

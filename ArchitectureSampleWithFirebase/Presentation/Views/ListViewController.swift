@@ -11,13 +11,13 @@ class ListViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     var selectedPost: Post?
+    let contentArray = Variable<[Post]>([])
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeTableView()
         initializeUI()
         initializeUseCase()
-        listUseCase.loadPosts()
         bind()
     }
     
@@ -54,13 +54,16 @@ class ListViewController: UIViewController {
     
     func bind() {
         addButton.rx.tap.asDriver().drive(onNext: toPost).disposed(by: disposeBag)
-        listUseCase.contentArray
-            .bind(to: tableView.rx.items(cellIdentifier: R.reuseIdentifier.listTableViewCell.identifier, cellType: ListTableViewCell.self)) { (row, element, cell) in
+        listUseCase.loadPosts()
+            .subscribe(onNext: postsDidLoad)
+            .disposed(by: disposeBag)
+        contentArray.asDriver()
+            .drive(tableView.rx.items(cellIdentifier: R.reuseIdentifier.listTableViewCell.identifier, cellType: ListTableViewCell.self)) { (row, element, cell) in
                 cell.setCellData(date: element.date, content: element.content)
             }
             .disposed(by: disposeBag)
         tableView.rx.itemSelected.asDriver()
-            .withLatestFrom(listUseCase.contentArray.asDriver(onErrorJustReturn: [])) { [unowned self] (indexPath: IndexPath, posts: [Post]) in
+            .withLatestFrom(contentArray.asDriver()) { [unowned self] (indexPath: IndexPath, posts: [Post]) in
                 self.selectedPost = posts[indexPath.row]
                 self.toPost()
             }
@@ -68,7 +71,7 @@ class ListViewController: UIViewController {
             .disposed(by: disposeBag)
         tableView.rx.itemDeleted.asDriver()
             .drive(onNext: { [unowned self] indexPath in
-                self.listUseCase.delete(at: indexPath.row)
+                self.listUseCase.delete(with: self.contentArray.value[indexPath.row].id)
                     .subscribe()
                     .disposed(by: self.disposeBag)
             })
@@ -77,5 +80,9 @@ class ListViewController: UIViewController {
     
     func toPost() {
         self.performSegue(withIdentifier: R.segue.listViewController.toPost, sender: self)
+    }
+    
+    private func postsDidLoad(posts: [Post]) {
+        contentArray.value = posts
     }
 }

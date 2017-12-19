@@ -48,6 +48,9 @@ class SignUpViewController: UIViewController {
                 guard let email = self.emailTextField.text,
                     let password = self.passwordTextField.text else { return }
                 self.signUpUseCase.signUp(with: email, and: password)
+                    .flatMapLatest { [unowned self] user in
+                        return self.signUpUseCase.sendEmailVerification()
+                    }
                     .subscribe(onNext: { [unowned self] _ in self.toLogin() })
                     .disposed(by: self.disposeBag)
             }).disposed(by: disposeBag)
