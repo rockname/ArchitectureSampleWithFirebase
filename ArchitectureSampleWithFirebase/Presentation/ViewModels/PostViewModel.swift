@@ -12,6 +12,11 @@ class PostViewModel: ViewModelType {
     struct Output {
         let post: Driver<Void>
         let defaultPost: Driver<Post?>
+        let error: Driver<Error>
+    }
+    
+    struct State {
+        let error = ErrorTracker()
     }
     
     private let selectedPost: Post?
@@ -25,6 +30,7 @@ class PostViewModel: ViewModelType {
     }
     
     func transform(input: PostViewModel.Input) -> PostViewModel.Output {
+        let state = State()
         let post = input.postTrigger
             .withLatestFrom(input.content)
             .flatMapLatest { [unowned self] content -> Driver<Void> in
@@ -37,16 +43,22 @@ class PostViewModel: ViewModelType {
                         .do(onNext: { [unowned self] _ in
                             self.navigator.toList()
                         })
+                        .trackError(state.error)
                         .asDriver(onErrorJustReturn: ())
                 } else {
                     return self.postUseCase.post(content)
                         .do(onNext: { [unowned self] _ in
                             self.navigator.toList()
                         })
+                        .trackError(state.error)
                         .asDriver(onErrorJustReturn: ())
                 }
         }
         
-        return PostViewModel.Output(post: post, defaultPost: Driver.just(selectedPost))
+        return PostViewModel.Output(
+            post: post,
+            defaultPost: Driver.just(selectedPost),
+            error: state.error.asDriver()
+        )
     }
 }

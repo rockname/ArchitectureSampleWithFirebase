@@ -17,6 +17,14 @@ class ListViewModel: ViewModelType {
         let select: Driver<Void>
         let delete: Driver<Void>
         let toPost: Driver<Void>
+        let isLoading: Driver<Bool>
+        let error: Driver<Error>
+    }
+    
+    struct State {
+        let contentArray = ArrayTracker<Post>()
+        let isLoading = ActivityIndicator()
+        let error = ErrorTracker()
     }
     
     private let listUseCase: ListUseCase
@@ -28,23 +36,23 @@ class ListViewModel: ViewModelType {
     }
     
     func transform(input: ListViewModel.Input) -> ListViewModel.Output {
-        let contentArray = Variable<[Post]>([])
+        let state = State()
         let load = input.trigger
             .flatMap { [unowned self] _ in
                 return self.listUseCase.loadPosts()
-                    .do(onNext: { posts in
-                        contentArray.value = posts
-                    })
-                    .map { _ in () }
-                    .asDriver(onErrorJustReturn: ())
+                    .trackArray(state.contentArray)
+                    .trackError(state.error)
+                    .trackActivity(state.isLoading)
+                    .mapToVoid()
+                    .asDriverOnErrorJustComplete()
             }
         let select = input.selectTrigger
-            .withLatestFrom(contentArray.asDriver()) { [unowned self] (index: Int, posts: [Post]) in
+            .withLatestFrom(state.contentArray) { [unowned self] (index: Int, posts: [Post]) in
                 self.navigator.toPost(with: posts[index])
         }
         let delete = input.deleteTrigger
             .flatMapLatest { [unowned self] index in
-                return self.listUseCase.delete(with: contentArray.value[index].id)
+                return self.listUseCase.delete(with: state.contentArray.array[index].id)
                     .asDriver(onErrorJustReturn: ())
         }
         let toPost = input.postTrigger
@@ -52,9 +60,11 @@ class ListViewModel: ViewModelType {
                 self.navigator.toPost()
             })
         return ListViewModel.Output(load: load,
-                                    posts: contentArray.asDriver(),
+                                    posts: state.contentArray.asDriver(),
                                     select: select,
                                     delete: delete,
-                                    toPost: toPost)
+                                    toPost: toPost,
+                                    isLoading: state.isLoading.asDriver(),
+                                    error: state.error.asDriver())
     }
 }

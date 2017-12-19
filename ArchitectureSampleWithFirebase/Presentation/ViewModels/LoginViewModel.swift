@@ -12,6 +12,11 @@ class LoginViewModel: ViewModelType {
     
     struct Output {
         let login: Driver<User>
+        let error: Driver<Error>
+    }
+    
+    struct State {
+        let error = ErrorTracker()
     }
     
     private let loginUseCase: LoginUseCase
@@ -23,6 +28,7 @@ class LoginViewModel: ViewModelType {
     }
     
     func transform(input: LoginViewModel.Input) -> LoginViewModel.Output {
+        let state = State()
         let requiredInputs = Driver.combineLatest(input.email, input.password)
         let login = input.loginTrigger
             .withLatestFrom(requiredInputs)
@@ -33,8 +39,9 @@ class LoginViewModel: ViewModelType {
                             self.navigator.toList()
                         }
                     })
-                    .asDriver(onErrorJustReturn: User(id: "", email: nil, isEmailVerified: false))
+                    .trackError(state.error)
+                    .asDriverOnErrorJustComplete()
         }
-        return LoginViewModel.Output(login: login)
+        return LoginViewModel.Output(login: login, error: state.error.asDriver())
     }
 }
