@@ -1,0 +1,45 @@
+# Xcodeのビルドファイル
+# https://gist.github.com/adamgit/3786883
+build/
+DerivedData
+
+# Xcodeのプライベート設定（ウィンドウサイズ、ブックマーク、ブレイクポイントなど）
+# http://lists.apple.com/archives/xcode-users/2004/Jan/msg00193.html
+*.pbxuser
+# http://lists.apple.com/archives/xcode-users/2007/Oct/msg00465.html
+*.mode1v3
+*.mode2v3
+# http://stackoverflow.com/questions/5223297/xcode-projects-what-is-a-perspectivev3-file
+*.perspectivev3
+
+#上記4項目のデフォルト設定ファイル
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+
+#ビルドのカスタムscheme（ロケーション等）
+xcuserdata
+
+# 手動で廃止（deprecate）したクラスのファイルがここへ移動する（同じ名前のクラスを定義しようとしたときなど）
+# http://stackoverflow.com/questions/1153211/whats-that-classes-1-moved-aside-directory-in-my-classes-directory
+*.moved-aside
+
+# Xcode起動の度に編集される
+# UserInterfaceState.xcuserstateなど
+*.xcuserstate
+
+# VCSのメタデータが含まれ、コミットしてしまうとmergeが困難になるなどの問題が発生する
+# http://stackoverflow.com/questions/18340453/should-xccheckout-files-in-xcode5-be-ignored-under-vcs
+*.xccheckout
+
+# Pods
+# CococaPodsを使用した際にライブラリがインストールされる場所
+Pods
+
+# Mac
+# Macが勝手に作る
+.DS_Store
+
+# Firebaseのplist
+GoogleService-Info.plist

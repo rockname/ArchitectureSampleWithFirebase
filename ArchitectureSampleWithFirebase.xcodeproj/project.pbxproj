@@ -30,7 +30,6 @@
 		4C4583611FC957FB002AFB69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C45835F1FC957FB002AFB69 /* Main.storyboard */; };
 		4C4583631FC957FB002AFB69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C4583621FC957FB002AFB69 /* Assets.xcassets */; };
 		4C4583661FC957FB002AFB69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4583641FC957FB002AFB69 /* LaunchScreen.storyboard */; };
-		4C4F5E5A1FD3F1B900AC40F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */; };
 		4C4F5E5C1FD3F1DB00AC40F3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */; };
 		4C7234F71FE699D100677DCC /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234F61FE699D100677DCC /* Exception.swift */; };
 		4CBB96F11FE1153F002C5DCC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB96F01FE1153F002C5DCC /* User.swift */; };
@@ -64,10 +63,10 @@
 		4C4583621FC957FB002AFB69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C4583651FC957FB002AFB69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C4583671FC957FB002AFB69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		4C7234F61FE699D100677DCC /* Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exception.swift; sourceTree = "<group>"; };
 		4CBB96F01FE1153F002C5DCC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4CCD9F681FE97A1C0093F63C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C656F36F39B7C52E8DB0138 /* Pods-ArchitectureSampleWithFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSampleWithFirebase.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArchitectureSampleWithFirebase/Pods-ArchitectureSampleWithFirebase.release.xcconfig"; sourceTree = "<group>"; };
 		F6942778E1CB5D48087C10AD /* Pods-ArchitectureSampleWithFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSampleWithFirebase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArchitectureSampleWithFirebase/Pods-ArchitectureSampleWithFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -224,7 +223,7 @@
 				4C3D43601FDACF30008C5F01 /* Domain */,
 				4C3D435C1FDACF29008C5F01 /* Data */,
 				4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */,
-				4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */,
+				4CCD9F681FE97A1C0093F63C /* GoogleService-Info.plist */,
 				4C4583671FC957FB002AFB69 /* Info.plist */,
 				4C45835F1FC957FB002AFB69 /* Main.storyboard */,
 				4C4583641FC957FB002AFB69 /* LaunchScreen.storyboard */,
@@ -298,7 +297,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C4583661FC957FB002AFB69 /* LaunchScreen.storyboard in Resources */,
-				4C4F5E5A1FD3F1B900AC40F3 /* GoogleService-Info.plist in Resources */,
 				4C4583631FC957FB002AFB69 /* Assets.xcassets in Resources */,
 				4C4583611FC957FB002AFB69 /* Main.storyboard in Resources */,
 				4C3D43781FDACF49008C5F01 /* ListTableViewCell.xib in Resources */,
