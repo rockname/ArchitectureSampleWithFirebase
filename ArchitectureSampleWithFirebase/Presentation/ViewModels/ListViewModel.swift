@@ -28,18 +28,23 @@ class ListViewModel: ViewModelType {
     }
     
     func transform(input: ListViewModel.Input) -> ListViewModel.Output {
+        let contentArray = Variable<[Post]>([])
         let load = input.trigger
-            .do(onNext: { [unowned self] _ in
-                self.listUseCase.loadPosts()
-            })
-        let posts = listUseCase.contentArray.asDriver(onErrorJustReturn: [])
+            .flatMap { [unowned self] _ in
+                return self.listUseCase.loadPosts()
+                    .do(onNext: { posts in
+                        contentArray.value = posts
+                    })
+                    .map { _ in () }
+                    .asDriver(onErrorJustReturn: ())
+            }
         let select = input.selectTrigger
-            .withLatestFrom(posts) { [unowned self] (index: Int, posts: [Post]) in
+            .withLatestFrom(contentArray.asDriver()) { [unowned self] (index: Int, posts: [Post]) in
                 self.navigator.toPost(with: posts[index])
         }
         let delete = input.deleteTrigger
             .flatMapLatest { [unowned self] index in
-                return self.listUseCase.delete(at: index)
+                return self.listUseCase.delete(with: contentArray.value[index].id)
                     .asDriver(onErrorJustReturn: ())
         }
         let toPost = input.postTrigger
@@ -47,7 +52,7 @@ class ListViewModel: ViewModelType {
                 self.navigator.toPost()
             })
         return ListViewModel.Output(load: load,
-                                    posts: posts,
+                                    posts: contentArray.asDriver(),
                                     select: select,
                                     delete: delete,
                                     toPost: toPost)

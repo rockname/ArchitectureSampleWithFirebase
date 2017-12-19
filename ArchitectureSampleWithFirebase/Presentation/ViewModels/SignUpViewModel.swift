@@ -32,10 +32,9 @@ class SignUpViewModel: ViewModelType {
             .withLatestFrom(requiredInputs)
             .flatMapLatest { [unowned self] (email: String, password: String) in
                 return self.signUpUseCase.signUp(with: email, and: password)
-                    .map { _ in return () }
-                    .do(onNext: { [unowned self] _ in
-                        self.navigator.toLogin()
-                    })
+                    .flatMapLatest { [unowned self] _ in
+                        return self.signUpUseCase.sendEmailVerification()
+                    }
                     .asDriver(onErrorJustReturn: ())
         }
         let login = input.loginTrigger
