@@ -39,7 +39,6 @@
 		4C4924951FE768F10073FE0B /* SignUpNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4924941FE768F10073FE0B /* SignUpNavigator.swift */; };
 		4C4924971FE769080073FE0B /* LoginNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4924961FE769080073FE0B /* LoginNavigator.swift */; };
 		4C4924991FE769370073FE0B /* PostNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4924981FE769370073FE0B /* PostNavigator.swift */; };
-		4C4F5E5A1FD3F1B900AC40F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */; };
 		4C4F5E5C1FD3F1DB00AC40F3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */; };
 		4C7234F71FE699D100677DCC /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234F61FE699D100677DCC /* Exception.swift */; };
 		4CBB96F11FE1153F002C5DCC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB96F01FE1153F002C5DCC /* User.swift */; };
@@ -82,10 +81,10 @@
 		4C4924941FE768F10073FE0B /* SignUpNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNavigator.swift; sourceTree = "<group>"; };
 		4C4924961FE769080073FE0B /* LoginNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigator.swift; sourceTree = "<group>"; };
 		4C4924981FE769370073FE0B /* PostNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNavigator.swift; sourceTree = "<group>"; };
-		4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		4C7234F61FE699D100677DCC /* Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exception.swift; sourceTree = "<group>"; };
 		4CBB96F01FE1153F002C5DCC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4CCD9F691FE97A6C0093F63C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C656F36F39B7C52E8DB0138 /* Pods-ArchitectureSampleWithFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSampleWithFirebase.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArchitectureSampleWithFirebase/Pods-ArchitectureSampleWithFirebase.release.xcconfig"; sourceTree = "<group>"; };
 		F6942778E1CB5D48087C10AD /* Pods-ArchitectureSampleWithFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSampleWithFirebase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArchitectureSampleWithFirebase/Pods-ArchitectureSampleWithFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -244,7 +243,7 @@
 				4C3D43601FDACF30008C5F01 /* Domain */,
 				4C25B0461FE7823200C9A939 /* Data */,
 				4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */,
-				4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */,
+				4CCD9F691FE97A6C0093F63C /* GoogleService-Info.plist */,
 				4C4583671FC957FB002AFB69 /* Info.plist */,
 				4C45835F1FC957FB002AFB69 /* Main.storyboard */,
 				4C4583641FC957FB002AFB69 /* LaunchScreen.storyboard */,
@@ -341,7 +340,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C4583661FC957FB002AFB69 /* LaunchScreen.storyboard in Resources */,
-				4C4F5E5A1FD3F1B900AC40F3 /* GoogleService-Info.plist in Resources */,
 				4C4583631FC957FB002AFB69 /* Assets.xcassets in Resources */,
 				4C4583611FC957FB002AFB69 /* Main.storyboard in Resources */,
 				4C3D43781FDACF49008C5F01 /* ListTableViewCell.xib in Resources */,
