@@ -1,6 +1,8 @@
-# ArchitectureSampleWithFirebase(FatViewController)
+# ArchitectureSampleWithFirebase
 
 これは、iOSアプリを色々なアーキテクチャで実装してみたものです。
+
+Firebase(GoogleさんのmBaaS)でユーザーのSignUp/Login,投稿のCRUD処理をする、ものすごくシンプルなアプリです。
 
 ![](./Images/sample_app.png)
 
