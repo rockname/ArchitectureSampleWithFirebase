@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C04772C1FE96435005A8A45 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C04772B1FE96435005A8A45 /* ActivityIndicator.swift */; };
+		4C04772F1FE96468005A8A45 /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C04772E1FE96468005A8A45 /* ErrorTracker.swift */; };
+		4C0477311FE96482005A8A45 /* ArrayTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0477301FE96482005A8A45 /* ArrayTracker.swift */; };
+		4C0477331FE964A4005A8A45 /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0477321FE964A4005A8A45 /* Observable+Ext.swift */; };
 		4C3D43771FDACF49008C5F01 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D436D1FDACF38008C5F01 /* ListTableViewCell.swift */; };
 		4C3D43781FDACF49008C5F01 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C3D436E1FDACF38008C5F01 /* ListTableViewCell.xib */; };
 		4C3D43791FDACF49008C5F01 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D436F1FDACF38008C5F01 /* ListViewController.swift */; };
@@ -44,6 +48,10 @@
 
 /* Begin PBXFileReference section */
 		47F3BC4701245F536E3E013D /* Pods_ArchitectureSampleWithFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArchitectureSampleWithFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C04772B1FE96435005A8A45 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		4C04772E1FE96468005A8A45 /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
+		4C0477301FE96482005A8A45 /* ArrayTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayTracker.swift; sourceTree = "<group>"; };
+		4C0477321FE964A4005A8A45 /* Observable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Ext.swift"; sourceTree = "<group>"; };
 		4C3D435E1FDACF29008C5F01 /* FireBaseAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseAuthRepository.swift; sourceTree = "<group>"; };
 		4C3D435F1FDACF29008C5F01 /* FireBasePostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBasePostRepository.swift; sourceTree = "<group>"; };
 		4C3D43641FDACF30008C5F01 /* ListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUseCase.swift; sourceTree = "<group>"; };
@@ -111,6 +119,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4C04772D1FE96440005A8A45 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4C04772B1FE96435005A8A45 /* ActivityIndicator.swift */,
+				4C04772E1FE96468005A8A45 /* ErrorTracker.swift */,
+				4C0477301FE96482005A8A45 /* ArrayTracker.swift */,
+				4C0477321FE964A4005A8A45 /* Observable+Ext.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		4C25B0461FE7823200C9A939 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +144,7 @@
 				4C4924931FE764430073FE0B /* Navigators */,
 				4C3D436B1FDACF38008C5F01 /* Views */,
 				4C49248E1FE75B7F0073FE0B /* ViewModels */,
+				4C04772D1FE96440005A8A45 /* Utilities */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -426,10 +446,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0477311FE96482005A8A45 /* ArrayTracker.swift in Sources */,
 				4C3D437C1FDACF49008C5F01 /* SignUpViewController.swift in Sources */,
 				4C3D43891FDAD014008C5F01 /* PostUseCase.swift in Sources */,
 				4C3D437A1FDACF49008C5F01 /* LoginViewController.swift in Sources */,
 				4C3D43771FDACF49008C5F01 /* ListTableViewCell.swift in Sources */,
+				4C04772C1FE96435005A8A45 /* ActivityIndicator.swift in Sources */,
 				4C3D437E1FDACF5E008C5F01 /* FireBasePostRepository.swift in Sources */,
 				4C4924971FE769080073FE0B /* LoginNavigator.swift in Sources */,
 				4C4924921FE764380073FE0B /* ListNavigator.swift in Sources */,
@@ -437,8 +459,10 @@
 				4C7234F71FE699D100677DCC /* Exception.swift in Sources */,
 				4C3D437D1FDACF5B008C5F01 /* FireBaseAuthRepository.swift in Sources */,
 				4C3D437B1FDACF49008C5F01 /* PostViewController.swift in Sources */,
+				4C0477331FE964A4005A8A45 /* Observable+Ext.swift in Sources */,
 				4C4924891FE75B530073FE0B /* LoginViewModel.swift in Sources */,
 				4C3D43811FDACF9C008C5F01 /* Post.swift in Sources */,
+				4C04772F1FE96468005A8A45 /* ErrorTracker.swift in Sources */,
 				4C4F5E5C1FD3F1DB00AC40F3 /* R.generated.swift in Sources */,
 				4C4924901FE75BDF0073FE0B /* ViewModelType.swift in Sources */,
 				4C3D43831FDACFDD008C5F01 /* AuthRepository.swift in Sources */,
