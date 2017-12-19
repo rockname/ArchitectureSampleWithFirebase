@@ -20,11 +20,11 @@ class PostViewModel: ViewModelType {
     }
     
     private let selectedPost: Post?
-    private let postUseCase: PostUseCase
+    private let postModel: PostModel
     private let navigator: PostNavigator
     
-    init(with postUseCase: PostUseCase, and navigator: PostNavigator, and selectedPost: Post? = nil) {
-        self.postUseCase = postUseCase
+    init(with postModel: PostModel, and navigator: PostNavigator, and selectedPost: Post? = nil) {
+        self.postModel = postModel
         self.navigator = navigator
         self.selectedPost = selectedPost
     }
@@ -35,8 +35,8 @@ class PostViewModel: ViewModelType {
             .withLatestFrom(input.content)
             .flatMapLatest { [unowned self] content -> Driver<Void> in
                 if let sP = self.selectedPost {
-                    return self.postUseCase.update(
-                        post: Post(id: sP.id,
+                    return self.postModel.update(
+                        Post(id: sP.id,
                                    user: sP.user,
                                    content: content,
                                    date: Date()))
@@ -46,7 +46,7 @@ class PostViewModel: ViewModelType {
                         .trackError(state.error)
                         .asDriver(onErrorJustReturn: ())
                 } else {
-                    return self.postUseCase.post(content)
+                    return self.postModel.create(with: content)
                         .do(onNext: { [unowned self] _ in
                             self.navigator.toList()
                         })

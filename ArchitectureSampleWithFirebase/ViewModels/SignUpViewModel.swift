@@ -23,11 +23,11 @@ class SignUpViewModel: ViewModelType {
         let error = ErrorTracker()
     }
     
-    private let signUpUseCase: SignUpUseCase
+    private let authModel: AuthModel
     private let navigator: SignUpNavigator
     
-    init(with signUpUseCase: SignUpUseCase, and navigator: SignUpNavigator) {
-        self.signUpUseCase = signUpUseCase
+    init(with authModel: AuthModel, and navigator: SignUpNavigator) {
+        self.authModel = authModel
         self.navigator = navigator
     }
     
@@ -37,10 +37,10 @@ class SignUpViewModel: ViewModelType {
         let signUp = input.signUpTrigger
             .withLatestFrom(requiredInputs)
             .flatMapLatest { [unowned self] (email: String, password: String) in
-                return self.signUpUseCase.signUp(with: email, and: password)
+                return self.authModel.signUp(with: email, and: password)
                     .trackError(state.error)
                     .flatMapLatest { [unowned self] _ in
-                        return self.signUpUseCase.sendEmailVerification()
+                        return self.authModel.sendEmailVerification()
                             .trackError(state.error)
                     }
                     .asDriverOnErrorJustComplete()
@@ -49,7 +49,7 @@ class SignUpViewModel: ViewModelType {
             .do(onNext: { [unowned self] _ in self.navigator.toLogin() })
         let checkLogin = input.checkLoginTrigger
             .flatMapLatest { [unowned self] _ in
-                return self.signUpUseCase.checkLogIn()
+                return self.authModel.checkLogin()
                     .map { [unowned self] isLogin in
                         if isLogin { self.navigator.toList() }
                 }

@@ -1,7 +1,14 @@
 import Firebase
 import RxSwift
 
-class FireBasePostRepository: PostRepository {
+struct Post {
+    var id: String
+    var user: String
+    var content: String
+    var date: Date
+}
+
+class PostModel {
     
     let db: Firestore
     
@@ -29,7 +36,7 @@ class FireBasePostRepository: PostRepository {
         }
     }
     
-    func read() -> Observable<[Post]> {
+    func read() -> Observable<QuerySnapshot> {
         let options = QueryListenOptions()
         options.includeQueryMetadataChanges(true)
         
@@ -49,17 +56,7 @@ class FireBasePostRepository: PostRepository {
                     }
                     print("Current data: \(snap)")
                     
-                    var posts: [Post] = []
-                    if !snap.isEmpty {
-                        for item in snap.documents {
-                            posts.append(Post(id: item.documentID,
-                                              user: item["user"] as! String,
-                                              content: item["content"] as! String,
-                                              date: item["date"] as! Date)
-                            )
-                        }
-                    }
-                    observer.onNext(posts)
+                    observer.onNext(snap)
             }
             return Disposables.create()
         }

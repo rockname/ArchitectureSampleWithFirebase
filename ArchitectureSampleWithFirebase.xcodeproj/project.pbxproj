@@ -17,15 +17,8 @@
 		4C3D437A1FDACF49008C5F01 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43701FDACF38008C5F01 /* LoginViewController.swift */; };
 		4C3D437B1FDACF49008C5F01 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43711FDACF38008C5F01 /* PostViewController.swift */; };
 		4C3D437C1FDACF49008C5F01 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43721FDACF38008C5F01 /* SignUpViewController.swift */; };
-		4C3D437D1FDACF5B008C5F01 /* FireBaseAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D435E1FDACF29008C5F01 /* FireBaseAuthRepository.swift */; };
-		4C3D437E1FDACF5E008C5F01 /* FireBasePostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D435F1FDACF29008C5F01 /* FireBasePostRepository.swift */; };
-		4C3D437F1FDACF60008C5F01 /* ListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43641FDACF30008C5F01 /* ListUseCase.swift */; };
-		4C3D43811FDACF9C008C5F01 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43801FDACF9C008C5F01 /* Post.swift */; };
-		4C3D43831FDACFDD008C5F01 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43821FDACFDD008C5F01 /* AuthRepository.swift */; };
-		4C3D43851FDACFF0008C5F01 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43841FDACFF0008C5F01 /* PostRepository.swift */; };
-		4C3D43871FDAD008008C5F01 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43861FDAD008008C5F01 /* LoginUseCase.swift */; };
-		4C3D43891FDAD014008C5F01 /* PostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D43881FDAD014008C5F01 /* PostUseCase.swift */; };
-		4C3D438B1FDAD020008C5F01 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D438A1FDAD020008C5F01 /* SignUpUseCase.swift */; };
+		4C3D437D1FDACF5B008C5F01 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D435E1FDACF29008C5F01 /* AuthModel.swift */; };
+		4C3D437E1FDACF5E008C5F01 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D435F1FDACF29008C5F01 /* PostModel.swift */; };
 		4C45835C1FC957FB002AFB69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45835B1FC957FB002AFB69 /* AppDelegate.swift */; };
 		4C4583611FC957FB002AFB69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C45835F1FC957FB002AFB69 /* Main.storyboard */; };
 		4C4583631FC957FB002AFB69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C4583621FC957FB002AFB69 /* Assets.xcassets */; };
@@ -41,8 +34,7 @@
 		4C4924991FE769370073FE0B /* PostNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4924981FE769370073FE0B /* PostNavigator.swift */; };
 		4C4F5E5A1FD3F1B900AC40F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */; };
 		4C4F5E5C1FD3F1DB00AC40F3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */; };
-		4C7234F71FE699D100677DCC /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7234F61FE699D100677DCC /* Exception.swift */; };
-		4CBB96F11FE1153F002C5DCC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB96F01FE1153F002C5DCC /* User.swift */; };
+		4CCD9F631FE96EC80093F63C /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD9F621FE96EC80093F63C /* Exception.swift */; };
 		5E48A51588F5AA744DA8E726 /* Pods_ArchitectureSampleWithFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F3BC4701245F536E3E013D /* Pods_ArchitectureSampleWithFirebase.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,21 +44,14 @@
 		4C04772E1FE96468005A8A45 /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
 		4C0477301FE96482005A8A45 /* ArrayTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayTracker.swift; sourceTree = "<group>"; };
 		4C0477321FE964A4005A8A45 /* Observable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Ext.swift"; sourceTree = "<group>"; };
-		4C3D435E1FDACF29008C5F01 /* FireBaseAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseAuthRepository.swift; sourceTree = "<group>"; };
-		4C3D435F1FDACF29008C5F01 /* FireBasePostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBasePostRepository.swift; sourceTree = "<group>"; };
-		4C3D43641FDACF30008C5F01 /* ListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUseCase.swift; sourceTree = "<group>"; };
+		4C3D435E1FDACF29008C5F01 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		4C3D435F1FDACF29008C5F01 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		4C3D436D1FDACF38008C5F01 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		4C3D436E1FDACF38008C5F01 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		4C3D436F1FDACF38008C5F01 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		4C3D43701FDACF38008C5F01 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4C3D43711FDACF38008C5F01 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		4C3D43721FDACF38008C5F01 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		4C3D43801FDACF9C008C5F01 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		4C3D43821FDACFDD008C5F01 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
-		4C3D43841FDACFF0008C5F01 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
-		4C3D43861FDAD008008C5F01 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
-		4C3D43881FDAD014008C5F01 /* PostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUseCase.swift; sourceTree = "<group>"; };
-		4C3D438A1FDAD020008C5F01 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		4C4583581FC957FB002AFB69 /* ArchitectureSampleWithFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureSampleWithFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C45835B1FC957FB002AFB69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C4583601FC957FB002AFB69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,8 +69,7 @@
 		4C4924981FE769370073FE0B /* PostNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNavigator.swift; sourceTree = "<group>"; };
 		4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
-		4C7234F61FE699D100677DCC /* Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exception.swift; sourceTree = "<group>"; };
-		4CBB96F01FE1153F002C5DCC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4CCD9F621FE96EC80093F63C /* Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exception.swift; sourceTree = "<group>"; };
 		9C656F36F39B7C52E8DB0138 /* Pods-ArchitectureSampleWithFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSampleWithFirebase.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArchitectureSampleWithFirebase/Pods-ArchitectureSampleWithFirebase.release.xcconfig"; sourceTree = "<group>"; };
 		F6942778E1CB5D48087C10AD /* Pods-ArchitectureSampleWithFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureSampleWithFirebase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArchitectureSampleWithFirebase/Pods-ArchitectureSampleWithFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,76 +110,18 @@
 				4C04772E1FE96468005A8A45 /* ErrorTracker.swift */,
 				4C0477301FE96482005A8A45 /* ArrayTracker.swift */,
 				4C0477321FE964A4005A8A45 /* Observable+Ext.swift */,
+				4CCD9F621FE96EC80093F63C /* Exception.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		4C25B0461FE7823200C9A939 /* Data */ = {
+		4C0477341FE968C4005A8A45 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4C3D435D1FDACF29008C5F01 /* FirebaseRepositories */,
+				4C3D435E1FDACF29008C5F01 /* AuthModel.swift */,
+				4C3D435F1FDACF29008C5F01 /* PostModel.swift */,
 			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		4C25B0471FE7824800C9A939 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				4C4924931FE764430073FE0B /* Navigators */,
-				4C3D436B1FDACF38008C5F01 /* Views */,
-				4C49248E1FE75B7F0073FE0B /* ViewModels */,
-				4C04772D1FE96440005A8A45 /* Utilities */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
-		4C3D435D1FDACF29008C5F01 /* FirebaseRepositories */ = {
-			isa = PBXGroup;
-			children = (
-				4C3D435E1FDACF29008C5F01 /* FireBaseAuthRepository.swift */,
-				4C3D435F1FDACF29008C5F01 /* FireBasePostRepository.swift */,
-			);
-			path = FirebaseRepositories;
-			sourceTree = "<group>";
-		};
-		4C3D43601FDACF30008C5F01 /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				4C3D43621FDACF30008C5F01 /* Repositories */,
-				4C3D43611FDACF30008C5F01 /* Entities */,
-				4C3D43631FDACF30008C5F01 /* UseCases */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
-		4C3D43611FDACF30008C5F01 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				4C3D43801FDACF9C008C5F01 /* Post.swift */,
-				4CBB96F01FE1153F002C5DCC /* User.swift */,
-				4C7234F61FE699D100677DCC /* Exception.swift */,
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
-		4C3D43621FDACF30008C5F01 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-				4C3D43821FDACFDD008C5F01 /* AuthRepository.swift */,
-				4C3D43841FDACFF0008C5F01 /* PostRepository.swift */,
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
-		4C3D43631FDACF30008C5F01 /* UseCases */ = {
-			isa = PBXGroup;
-			children = (
-				4C3D43641FDACF30008C5F01 /* ListUseCase.swift */,
-				4C3D43861FDAD008008C5F01 /* LoginUseCase.swift */,
-				4C3D43881FDAD014008C5F01 /* PostUseCase.swift */,
-				4C3D438A1FDAD020008C5F01 /* SignUpUseCase.swift */,
-			);
-			path = UseCases;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		4C3D436B1FDACF38008C5F01 /* Views */ = {
@@ -240,9 +166,11 @@
 		4C45835A1FC957FB002AFB69 /* ArchitectureSampleWithFirebase */ = {
 			isa = PBXGroup;
 			children = (
-				4C25B0471FE7824800C9A939 /* Presentation */,
-				4C3D43601FDACF30008C5F01 /* Domain */,
-				4C25B0461FE7823200C9A939 /* Data */,
+				4C0477341FE968C4005A8A45 /* Models */,
+				4C4924931FE764430073FE0B /* Navigators */,
+				4C3D436B1FDACF38008C5F01 /* Views */,
+				4C49248E1FE75B7F0073FE0B /* ViewModels */,
+				4C04772D1FE96440005A8A45 /* Utilities */,
 				4C4F5E5B1FD3F1DB00AC40F3 /* R.generated.swift */,
 				4C4F5E591FD3EE2800AC40F3 /* GoogleService-Info.plist */,
 				4C4583671FC957FB002AFB69 /* Info.plist */,
@@ -448,35 +376,27 @@
 			files = (
 				4C0477311FE96482005A8A45 /* ArrayTracker.swift in Sources */,
 				4C3D437C1FDACF49008C5F01 /* SignUpViewController.swift in Sources */,
-				4C3D43891FDAD014008C5F01 /* PostUseCase.swift in Sources */,
 				4C3D437A1FDACF49008C5F01 /* LoginViewController.swift in Sources */,
 				4C3D43771FDACF49008C5F01 /* ListTableViewCell.swift in Sources */,
 				4C04772C1FE96435005A8A45 /* ActivityIndicator.swift in Sources */,
-				4C3D437E1FDACF5E008C5F01 /* FireBasePostRepository.swift in Sources */,
+				4C3D437E1FDACF5E008C5F01 /* PostModel.swift in Sources */,
 				4C4924971FE769080073FE0B /* LoginNavigator.swift in Sources */,
+				4CCD9F631FE96EC80093F63C /* Exception.swift in Sources */,
 				4C4924921FE764380073FE0B /* ListNavigator.swift in Sources */,
 				4C4924951FE768F10073FE0B /* SignUpNavigator.swift in Sources */,
-				4C7234F71FE699D100677DCC /* Exception.swift in Sources */,
-				4C3D437D1FDACF5B008C5F01 /* FireBaseAuthRepository.swift in Sources */,
+				4C3D437D1FDACF5B008C5F01 /* AuthModel.swift in Sources */,
 				4C3D437B1FDACF49008C5F01 /* PostViewController.swift in Sources */,
 				4C0477331FE964A4005A8A45 /* Observable+Ext.swift in Sources */,
 				4C4924891FE75B530073FE0B /* LoginViewModel.swift in Sources */,
-				4C3D43811FDACF9C008C5F01 /* Post.swift in Sources */,
 				4C04772F1FE96468005A8A45 /* ErrorTracker.swift in Sources */,
 				4C4F5E5C1FD3F1DB00AC40F3 /* R.generated.swift in Sources */,
 				4C4924901FE75BDF0073FE0B /* ViewModelType.swift in Sources */,
-				4C3D43831FDACFDD008C5F01 /* AuthRepository.swift in Sources */,
-				4C3D438B1FDAD020008C5F01 /* SignUpUseCase.swift in Sources */,
 				4C49248B1FE75B650073FE0B /* SignUpViewModel.swift in Sources */,
 				4C4924991FE769370073FE0B /* PostNavigator.swift in Sources */,
-				4C3D437F1FDACF60008C5F01 /* ListUseCase.swift in Sources */,
-				4C3D43851FDACFF0008C5F01 /* PostRepository.swift in Sources */,
 				4C4924871FE75B3F0073FE0B /* ListViewModel.swift in Sources */,
 				4C3D43791FDACF49008C5F01 /* ListViewController.swift in Sources */,
 				4C49248D1FE75B770073FE0B /* PostViewModel.swift in Sources */,
 				4C45835C1FC957FB002AFB69 /* AppDelegate.swift in Sources */,
-				4C3D43871FDAD008008C5F01 /* LoginUseCase.swift in Sources */,
-				4CBB96F11FE1153F002C5DCC /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

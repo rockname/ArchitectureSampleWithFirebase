@@ -46,7 +46,7 @@ class ListViewController: UIViewController {
     
     func initializeViewModel() {
         listViewModel = ListViewModel(
-            with: ListUseCase(with: FireBasePostRepository()),
+            with: PostModel(),
             and: ListNavigator(with: self)
         )
     }

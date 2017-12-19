@@ -1,7 +1,7 @@
 import Firebase
 import RxSwift
 
-class FireBaseAuthRepository: AuthRepository {
+class AuthModel {
     
     func checkLogin() -> Observable<Bool> {
         return Observable.create { observer in
@@ -23,7 +23,7 @@ class FireBaseAuthRepository: AuthRepository {
                     return
                 }
                 guard let user = user else { return }
-                observer.onNext(User(id: user.uid, email: user.email, isEmailVerified: user.isEmailVerified))
+                observer.onNext(user)
             }
             return Disposables.create()
         }
@@ -59,7 +59,7 @@ class FireBaseAuthRepository: AuthRepository {
                     observer.onError(Exception.auth)
                     return
                 }
-                observer.onNext(User(id: loginUser.uid, email: loginUser.email, isEmailVerified: loginUser.isEmailVerified))
+                observer.onNext(loginUser)
             }
             return Disposables.create()
         }

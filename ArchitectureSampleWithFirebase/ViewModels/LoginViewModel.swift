@@ -1,6 +1,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Firebase
 
 class LoginViewModel: ViewModelType {
     
@@ -19,11 +20,11 @@ class LoginViewModel: ViewModelType {
         let error = ErrorTracker()
     }
     
-    private let loginUseCase: LoginUseCase
+    private let authModel: AuthModel
     private let navigator: LoginNavigator
     
-    init(with loginUseCase: LoginUseCase, and navigator: LoginNavigator) {
-        self.loginUseCase = loginUseCase
+    init(with authModel: AuthModel, and navigator: LoginNavigator) {
+        self.authModel = authModel
         self.navigator = navigator
     }
     
@@ -33,7 +34,7 @@ class LoginViewModel: ViewModelType {
         let login = input.loginTrigger
             .withLatestFrom(requiredInputs)
             .flatMapLatest { [unowned self] (email: String, password: String) in
-                return self.loginUseCase.login(with: email, and: password)
+                return self.authModel.login(with: email, and: password)
                     .do(onNext: { [unowned self] user in
                         if user.isEmailVerified {
                             self.navigator.toList()

@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Firebase
 
 class LoginViewController: UIViewController {
     
@@ -26,7 +27,7 @@ class LoginViewController: UIViewController {
     }
     
     func initializeViewModel() {
-        loginViewModel = LoginViewModel(with: LoginUseCase(with: FireBaseAuthRepository()),
+        loginViewModel = LoginViewModel(with: AuthModel(),
                                         and: LoginNavigator(with: self))
     }
     

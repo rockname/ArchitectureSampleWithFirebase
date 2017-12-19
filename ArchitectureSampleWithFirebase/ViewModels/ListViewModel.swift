@@ -1,6 +1,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Firebase
 
 class ListViewModel: ViewModelType {
     
@@ -27,11 +28,11 @@ class ListViewModel: ViewModelType {
         let error = ErrorTracker()
     }
     
-    private let listUseCase: ListUseCase
+    private let postModel: PostModel
     private let navigator: ListNavigator
     
-    init(with listUseCase: ListUseCase, and navigator: ListNavigator) {
-        self.listUseCase = listUseCase
+    init(with postModel: PostModel, and navigator: ListNavigator) {
+        self.postModel = postModel
         self.navigator = navigator
     }
     
@@ -39,7 +40,20 @@ class ListViewModel: ViewModelType {
         let state = State()
         let load = input.trigger
             .flatMap { [unowned self] _ in
-                return self.listUseCase.loadPosts()
+                return self.postModel.read()
+                    .map { snap in
+                        var posts: [Post] = []
+                        if !snap.isEmpty {
+                            for item in snap.documents {
+                                posts.append(Post(id: item.documentID,
+                                                  user: item["user"] as! String,
+                                                  content: item["content"] as! String,
+                                                  date: item["date"] as! Date)
+                                )
+                            }
+                        }
+                        return posts
+                    }
                     .trackArray(state.contentArray)
                     .trackError(state.error)
                     .trackActivity(state.isLoading)
@@ -52,7 +66,7 @@ class ListViewModel: ViewModelType {
         }
         let delete = input.deleteTrigger
             .flatMapLatest { [unowned self] index in
-                return self.listUseCase.delete(with: state.contentArray.array[index].id)
+                return self.postModel.delete(state.contentArray.array[index].id)
                     .asDriver(onErrorJustReturn: ())
         }
         let toPost = input.postTrigger
