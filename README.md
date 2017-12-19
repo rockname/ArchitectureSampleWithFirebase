@@ -24,14 +24,14 @@ Firebase(GoogleさんのmBaaS)でユーザーのSignUp/Login,投稿のCRUD処理
 
 このアプリではCocoa PodsとFirebaseを使用しているため、まずはそれらをインストールする必要があります。
 
-- プロジェクトのルートディレクトリで'pod install'を実行
+- プロジェクトのルートディレクトリで`pod install`を実行
 - R.swiftというライブラリの環境を整える
-  - Run Scriptに'"$PODS_ROOT/R.swift/rswift" "$SRCROOT"'と記述
+  - Run Scriptに`"$PODS_ROOT/R.swift/rswift" "$SRCROOT"`と記述
   - 一度ビルドする
-  - 'R.generated.swift'が生成されるのでそれをプロジェクトへ追加
+  - `R.generated.swift`が生成されるのでそれをプロジェクトへ追加
   
 - Firebaseの環境を整える
   - Firebaseのプロジェクトを作成
-  - 'GoogleService-Info.plist'をダウンロード
+  - `GoogleService-Info.plist`をダウンロード
   - plistをプロジェクトへ追加
   
