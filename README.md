@@ -18,7 +18,7 @@ Firebase(GoogleさんのmBaaS)でユーザーのSignUp/Login,投稿のCRUD処理
 
 - ### [Clean Architecture](https://github.com/rockname/ArchitectureSampleWithFirebase/tree/clean-architecture)
 
-- ### [Clean Architecture + MVVM](clean-architecture+mvvm)
+- ### [Clean Architecture + MVVM](https://github.com/rockname/ArchitectureSampleWithFirebase/tree/clean-architecture+mvvm)
 
 ## 必要事項
 
