@@ -1,7 +1,7 @@
 # ArchitectureSampleWithFirebase
 
 これは、iOSアプリを色々なアーキテクチャで実装してみたものです。
-(詳しくは[こちらの記事](http://rock-name.com/ios/ios-architecture)で！)
+(詳しくは[こちらの記事](https://medium.com/@rockname/clean-archirecture-7be37f34c943)で！)
 
 Firebase(GoogleさんのmBaaS)でユーザーのSignUp/Login,投稿のCRUD処理をする、ものすごくシンプルなアプリです。
 
