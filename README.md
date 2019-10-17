@@ -12,5 +12,4 @@
 
 - ### [Clean Architecture](https://github.com/rockname/ArchitectureSampleWithFirebase/tree/clean-architecture)
 
-- ### [Clean Architecture + MVVM](clean-architecture+mvvm)
-
+- ### [Clean Architecture + MVVM](https://github.com/rockname/ArchitectureSampleWithFirebase/tree/clean-architecture+mvvm)
